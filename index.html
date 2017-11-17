@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+    <meta name="google-signin-client_id" content="306445631627-6uun6lcjsndlf9i4et6c5an2noaj5fmg.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 
     <title>아주대학교 인지심리학 실험실 AC4CS</title>
 
@@ -35,7 +40,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#"></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Services</a>
@@ -47,7 +52,58 @@
         </div>
       </div>
     </nav>
+<div class="container">
+		<div class="g-signin2" data-onsuccess="onSignIn" style="visibility: gone;"></div>
+		<a href="#" onclick="signOut();" style="visibility: gone;">Sign out</a>
+		<button type="button" class="btn btn-primary" onclick="startExperiment();">Experiment</button>
+	</div>
 
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	    crossorigin="anonymous"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			startExperiment(true);
+		}
+
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+			});
+		}
+
+		function startExperiment(fromOnSignIn) {
+			var auth2 = gapi.auth2.getAuthInstance();
+			if (auth2.isSignedIn.get()) {
+				var profile = auth2.currentUser.get().getBasicProfile();
+				console.log('ID: ' + profile.getId());
+				console.log('Full Name: ' + profile.getName());
+				console.log('Given Name: ' + profile.getGivenName());
+				console.log('Family Name: ' + profile.getFamilyName());
+				console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail());
+				location.href = "experiment.html?" + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()]
+					.join('&');
+			} else if (fromOnSignIn) {
+				alert("로그인에 실패했습니다.");
+			} else {
+				$(".g-signin2 > .abcRioButton").click();
+			}
+		}
+	</script>
+    
     <!-- Page Content -->
     <div class="container">
 
