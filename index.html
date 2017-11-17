@@ -26,6 +26,7 @@
   <body>
 
     <!-- Navigation -->
+   <!--
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">Web Experiment</a>
@@ -52,7 +53,7 @@
         </div>
       </div>
     </nav>
-	  
+  -->
       <!-- Page Content -->
     <div class="container">
 
@@ -63,8 +64,8 @@
 	  
 	<div class="container" align="right">
 		<div class="g-signin2" data-onsuccess="onSignIn" style="visibility: gone;"></div>
-		<a href="#" onclick="signOut();" style="visibility: gone;">Sign out</a>
-		<button type="button" class="btn btn-primary" onclick="startExperiment();">Experiment</button>
+		<a href="https://arete0.github.io/experiment" onclick="signOut();" style="visibility: gone;">Sign out</a>
+		<button type="button" class="btn btn-primary" onclick="startExperiment();">구글로그인정보요청</button>
 	</div>
 
 	<!-- Optional JavaScript -->
@@ -103,7 +104,7 @@
 				console.log('Family Name: ' + profile.getFamilyName());
 				console.log('Image URL: ' + profile.getImageUrl());
 				console.log('Email: ' + profile.getEmail());
-				location.href = "experiment.html?" + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()]
+				location.href = "index.html?" + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()]
 					.join('&');
 			} else if (fromOnSignIn) {
 				alert("로그인에 실패했습니다.");
@@ -111,9 +112,24 @@
 				$(".g-signin2 > .abcRioButton").click();
 			}
 		}
-	</script>
-    
-
+		
+	     var info = getParticipantInfo();
+	     var filename = ['data', info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+	
+	      function getParticipantInfo() {
+	    return decodeURI(location.search) // decode query parameters
+	      .substring(1) // remove '?'
+	      .split('&') // split parameters
+	      .map(function (token) {
+		return token.split('='); // split key and value
+	      })
+	      .reduce(function (out, item) {
+		if (item[0].length == 0) return out;
+		out[item[0]] = item[1];
+		return out;
+	      }, {}); // collect into an object
+	  }
+</script>
 
       <div class="row">
 
@@ -134,7 +150,8 @@
           <a href="stroop/Start.html"><img class="card-img-top" src="images/stroop_thumb.PNG" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="stroop/Start.html">Stroop Task</a>
+              <a href=# class="card-title" onclick="location.href = 'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()]
+					.join('&');">Stroop Task</a>
             </h4>
             <p class="card-text"></p>
           </div>
