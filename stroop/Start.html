@@ -49,7 +49,7 @@ $( document ).ready(function() {
         saveData(filename, rawdata_string);
         expfactory_finished = true;
 
-        location.href="http://arete0.github.io/experiment";
+        location.href="https://arete0.github.io/experiment";
     }
     });
 });
@@ -58,7 +58,7 @@ $( document ).ready(function() {
        $.ajax({
           type:'post',
           cache: false,
-          url: 'https://202.30.6.15/save_data.php', // this is the path to the above PHP script
+          url: 'http://202.30.6.15/save_data.php', // this is the path to the above PHP script
           data: {filename: filename, filedata: filedata}
         });
     }
