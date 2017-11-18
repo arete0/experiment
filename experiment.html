@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
@@ -65,7 +65,7 @@
 <script>		
 	var info = getParticipantInfo();
 	//var filename = [info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
-	//var infotail = [info.id, info.name, info.email].join('-');
+	var infotail = [info.id, info.name, info.email].join('&');
 	
 	function getParticipantInfo() {
 	    return decodeURI(location.search) // decode query parameters
@@ -98,10 +98,10 @@
 
       <div class="col-lg-6 portfolio-item">
         <div class="card h-100">
-          <a href="'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&')"><img class="card-img-top" src="images/stroop_thumb.PNG" alt=""></a>
+          <a href='stroop/Start.html?infotail'><img class="card-img-top" src="images/stroop_thumb.PNG" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href='stroop/Start.html?'<['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&')>>Stroop Task</a>
+              <a href='stroop/Start.html?infotail'>Stroop Task</a>
             </h4>
             <p class="card-text"></p>
           </div>
