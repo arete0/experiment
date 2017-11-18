@@ -86,11 +86,11 @@ var getFeedback = function() {
   }
   if (response == correct_response) {
     correct = true
-    feedback_text =  '<div class = centerbox><div style="color:green"; class = center-text>Correct!</div></div>'
+    feedback_text =  '<div class = centerbox><div style="color:green"; class = center-text>정답!</div></div>'
   } else if (response == -1) {
-    feedback_text =  '<div class = centerbox><div class = center-text>Respond Faster!</p></div>'
+    feedback_text =  '<div class = centerbox><div class = center-text>더 빠르게 답하시오!</p></div>'
   } else {
-    feedback_text = '<div class = centerbox><div style="color:red"; class = center-text>Incorrect</div></div>'
+    feedback_text = '<div class = centerbox><div style="color:red"; class = center-text>오답</div></div>'
   }
   jsPsych.data.addDataToLastTrial({'correct': correct, 'correct_response': correct_response})
   return feedback_text
