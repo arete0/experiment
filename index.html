@@ -116,7 +116,7 @@
 		}
 		
 	     var info = getParticipantInfo();
-	     var filename = ['data', info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+	     //var filename = ['data', info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
 	
 	      function getParticipantInfo() {
 	    return decodeURI(location.search) // decode query parameters
@@ -149,10 +149,10 @@
 
       <div class="col-lg-6 portfolio-item">
         <div class="card h-100">
-          <a href="#" class="card h-100" onclick="location.href = 'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&');"><img class="card-img-top" src="images/stroop_thumb.PNG" alt=""></a>
+          <a href="'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&')"><img class="card-img-top" src="images/stroop_thumb.PNG" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#" class="card-title" onclick="location.href = 'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&');">Stroop Task</a>
+              <a href="'stroop/Start.html?' + ['id=' + profile.getId(), 'name=' + profile.getName(), 'email=' + profile.getEmail()].join('&')">Stroop Task</a>
             </h4>
             <p class="card-text"></p>
           </div>
