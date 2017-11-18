@@ -21,8 +21,23 @@
 <body>
 <div class="center">
   <p> * 이 페이지는 실험참가에 대한 사전 동의서입니다. 아래의 <strong>실험시작</strong>을 누르는 것은
-    실험 참가에 동의하는 것을 의미합니다.</p>
-  <button type="button" id="start" class='jspsych-btn' align='center' onclick="location.href='experiments_ac4cs/flanker_ac4cs.html'">실험시작</button>
-</div>
+    실험 참가에 동의하는 것을 의미합니다.</p><br>
+ <p><small> 참가동의를 누르면 실험시작 링크가 나타납니다.</small> </p>
+ <br>
+ <button onclick="myFunction()">참가 동의</button>
+
+<script>
+function myFunction() {
+    var x = document.createElement("A");
+    var t = document.createTextNode("실험시작");
+    x.setAttribute("href", "https://www.w3schools.com"); //이동링크
+    x.appendChild(t);
+    document.body.appendChild(x);
+}
+</script>
+ <!--
+ <button type="button" id="start" class='jspsych-btn' align='center' onclick="location.href='experiments_ac4cs/flanker_ac4cs.html'">실험시작</button>
+ -->
+ </div>
 </body>
 </html>
