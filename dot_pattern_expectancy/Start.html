@@ -39,7 +39,7 @@ $( document ).ready(function() {
     on_finish: function(data){
         var info = getParticipantInfo();
         //jsPsych.data.displayData();
-        var filename = ['dot_pattern', info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+        var filename = ['dot_pattern', (new Date()).getTime()].join('-') + '.csv';
         jsPsych.data.localSave(filename, 'csv');
         var rawdata_string = jsPsych.data.dataAsCSV();
         //console.log(rawdata_string);
