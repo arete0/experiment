@@ -70,17 +70,16 @@
 
       <!-- Page Heading -->
       <h1 class="my-4">심리학 실험실
-        <small></small>
+        <small>
 	                      <div class="container">
-
-                  <div class="g-signin2" data-onsuccess="onSignIn" style="visibility: gone;"></div> 
-                  
-                  <a href="#" onclick="signOut();" style="visibility: gone;">Sign out</a>
- 
 		<!--
-                  <button type="button" class="btn btn-primary" color="gray" onclick="startExperiment();">들어가기</button>
-		-->
+                  <div class="g-signin2" data-onsuccess="onSignIn" style="visibility: gone;"></div>
+                  <a href="#" onclick="signOut();" style="visibility: gone;">Sign out</a>	
+		-->		
+                  <button type="button" class="btn btn-primary" color="gray" onclick="signOut();">Sign out</button>
+		
 </div>
+		</small>
       </h1>
 	    
 <!-- Optional JavaScript -->
@@ -105,6 +104,7 @@
 			var auth2 = gapi.auth2.getAuthInstance();
 			auth2.signOut().then(function () {
 				console.log('User signed out.');
+				location.href = "https://arete0.github.io/experiment/";
 			});
 		}
 		function startExperiment(fromOnSignIn) {
