@@ -146,7 +146,7 @@ var block1_list = jsPsych.randomization.repeat(trial_proportions, 2)
 var block2_list = jsPsych.randomization.repeat(trial_proportions, 2)
 var block3_list = jsPsych.randomization.repeat(trial_proportions, 2)
 var block4_list = jsPsych.randomization.repeat(trial_proportions, 2)
-var blocks = [block1_list] //, block2_list, block3_list, block4_list]
+var blocks = [block1_list, block2_list, block3_list, block4_list]
 
 /* ************************************ */
 /* Set up jsPsych blocks */
