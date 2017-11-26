@@ -206,7 +206,7 @@ for (var i = 0; i < num_go_stim; i++) {
   })
 }
   console.log(test_stimuli_block);
-var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 8);
+var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 6);
 var test_trials = jsPsych.randomization.repeat(test_stimuli_block, 30);
 
 
