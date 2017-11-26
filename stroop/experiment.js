@@ -168,10 +168,13 @@ var incongruent_stim = [{
 	key_answer: 71
 }];
 var stims = [].concat(congruent_stim, congruent_stim, incongruent_stim)
+var stims1 = [].concat(congruent_stim, congruent_stim, congruent_stim, congruent_stim, congruent_stim, congruent_stim, congruent_stim, congruent_stim, incongruent_stim)
+var stims2 = [].concat(congruent_stim, congruent_stim, incongruent_stim, incongruent_stim, incongruent_stim, incongruent_stim)
 var practice_len = 12
 var practice_stims = jsPsych.randomization.repeat(stims, practice_len / 12, true)
-var exp_len = 96
-var test_stims = jsPsych.randomization.repeat(stims, exp_len / 12, true)
+var exp_len = 60
+var test_stims1 = jsPsych.randomization.repeat(stims1, exp_len / 30, true)
+var test_stims2 = jsPsych.randomization.repeat(stims2, exp_len / 30, true)
 var choices = [66, 71, 82]
 var exp_stage = 'practice'
 
@@ -260,6 +263,17 @@ var instruction_node = {
 		}
 	}
 }
+
+var rest_block = {
+  type: 'poldrack-text',
+  data: {
+    trial_id: "rest"
+  },
+  timing_response: 180000,
+  text: '<div class = centerbox><p class = block-text>휴식시간입니다! <br><br>충분히 휴식을 취했다면, 아무키나 눌러 다시 시작하시오.</p></div>',
+  timing_post_trial: 1000
+};
+
 
 var end_block = {
 	type: 'poldrack-text',
@@ -353,11 +367,11 @@ stroop_experiment.push(start_test_block)
 	/* define test trials */
 for (i = 0; i < exp_len; i++) {
 	stroop_experiment.push(fixation_block)
-	var test_block = {
+	var test_block1 = {
 		type: 'poldrack-categorize',
-		stimulus: test_stims.stimulus[i],
-		data: test_stims.data[i],
-		key_answer: test_stims.key_answer[i],
+		stimulus: test_stims1.stimulus[i],
+		data: test_stims1.data[i],
+		key_answer: test_stims1.key_answer[i],
 		is_html: true,
 		correct_text: '<div class = fb_box><div class = center-text><font size = 20>정답!</font></div></div>',
 		incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>오답</font></div></div>',
@@ -370,13 +384,42 @@ for (i = 0; i < exp_len; i++) {
 		timing_post_trial: 250,
 		on_finish: function() {
 			jsPsych.data.addDataToLastTrial({
-				trial_id: 'stim',
+				trial_id: 'stim1',
 				exp_stage: 'test'
 			})
 		}
 	}
-	stroop_experiment.push(test_block)
+	stroop_experiment.push(test_block1)
 }
+stroop_experiment.push(rest_block)
+
+for (i = 0; i < exp_len; i++) {
+	stroop_experiment.push(fixation_block)
+	var test_block2 = {
+		type: 'poldrack-categorize',
+		stimulus: test_stims2.stimulus[i],
+		data: test_stims2.data[i],
+		key_answer: test_stims2.key_answer[i],
+		is_html: true,
+		correct_text: '<div class = fb_box><div class = center-text><font size = 20>정답!</font></div></div>',
+		incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>오답</font></div></div>',
+		timeout_message: '<div class = fb_box><div class = center-text><font size = 20>더 빠르게 답하시오!</font></div></div>',
+		choices: choices,
+		timing_response: 1500,
+		timing_stim: -1,
+		timing_feedback_duration: 500,
+		show_stim_with_feedback: true,
+		timing_post_trial: 250,
+		on_finish: function() {
+			jsPsych.data.addDataToLastTrial({
+				trial_id: 'stim2',
+				exp_stage: 'test'
+			})
+		}
+	}
+	stroop_experiment.push(test_block2)
+}
+
 stroop_experiment.push(attention_node)
 stroop_experiment.push(post_task_block)
 stroop_experiment.push(end_block)
