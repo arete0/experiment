@@ -217,7 +217,7 @@ var response_keys =
 
 
 var feedback_instruct_text =
-	'실험 참가를 환영합니다. 이 실험을 완료하는데 약 8분 정도 소요됩니다. <strong>enter</strong>를 눌러 시작하시오.'
+	'실험 참가를 환영합니다. <br>이 실험을 완료하는데 약 8분 정도 소요됩니다. <br><br><strong>enter</strong>를 눌러 시작하시오.'
 var feedback_instruct_block = {
 	type: 'poldrack-text',
 	data: {
