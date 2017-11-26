@@ -1,0 +1,90 @@
+#stim1 {
+	width: 15vw;
+	height: 15vw;
+	background: Red;
+	border-style: dotted;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+#stim2 {
+	width: 15vw;
+	height: 15vw;
+	background: Red;
+	border-style: solid;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+#stim3 {
+	width: 15vw;
+	height: 15vw;
+	background: Blue;
+	border-style: dotted;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+#stim4 {
+	width: 15vw;
+	height: 15vw;
+	background: Blue;
+    border-style: solid;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+#stim5 {
+	width: 15vw;
+	height: 15vw;
+	background: green;
+	border-style: dotted;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+#stim6 {
+	width: 15vw;
+	height: 15vw;
+	background: Green;
+	border-style: solid;
+	border-width: 5px;
+	border-color: black;
+	position: absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%,-50%);
+}
+
+
+.responded #stim1, .responded #stim2, .responded #stim3, .responded #stim4, .responded #stim5, .responded #stim6{
+	-moz-box-shadow:    inset 0 0 40px #000000;
+   -webkit-box-shadow: inset 0 0 40px #000000;
+   box-shadow:         inset 0 0 40px #000000;
+}

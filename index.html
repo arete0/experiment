@@ -7,218 +7,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-client_id" content="1084867659362-oohs02lc2gnn1ntths0ug5eubnd8s8ii.apps.googleusercontent.com">
 
     <title>아주대학교 인지심리학 실험실 AC4CS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-	    crossorigin="anonymous">
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/2-col-portfolio.css" rel="stylesheet">
 
   </head>
 
-  <body id="page-top">
+  <body>
 
     <!-- Navigation -->
-    <!--
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
+        <a class="navbar-brand" href="#">Web Experiment</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  -->
-    <!-- Intro Header -->
-    <header class="masthead">
-      <div class="intro-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Web Experiments</h1>
-              <p class="intro-text">웹 실험실에 오신것을 환영합니다.
-                </p>
-              <!--
-              <a href="#about" class="btn btn-circle js-scroll-trigger">
-                <i class="fa fa-heart animated"></i>
 
-                <i class="fa fa-angle-double-down animated"></i>
-                </a>
-                -->
-                <div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
-                  <div class="g-signin2" data-onsuccess="onSignIn" style="visibility: hidden;"></div>
-                  <br>
-                  <a href="#" onclick="signOut();" style="visibility: hidden;">Sign out</a>
-                  <br>
+      <!-- Page Heading -->
+      <h1 class="my-4">심리학 실험실
+        <small></small>
+      </h1>
 
-                  <button type="button" class="btn btn-primary" color="gray" onclick="startExperiment();">들어가기</button>
-                </div>
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="Guide.pdf"><img class="card-img-top" src="images/manual_thumb.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="Guide.pdf">실험참가 설명</a>
+            </h4>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="stroop/Start.html"><img class="card-img-top" src="images/stroop_thumb.png" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="stroop/Start.html">Stroop Task</a>
+            </h4>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="go_nogo/Start.html"><img class="card-img-top" src="images/go-nogo_thumb.png" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="go_nogo/Start.html">Go-Nogo</a>
+            </h4>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="n_back/Start.html"><img class="card-img-top" src="images/n-back_thumb.png" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="n_back/Start.html">n-back</a>
+            </h4>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="https://goo.gl/forms/qMNSSDldt0886JVH3"><img class="card-img-top" src="images/demographics_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://goo.gl/forms/qMNSSDldt0886JVH3">Demographic Info & Scales</a>
+              </h4>
+              <p class="card-text"></p>
             </div>
           </div>
         </div>
-      </div>
-    </header>
 
-  <!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	    crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-	    crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-	    crossorigin="anonymous"></script>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script>
-		function onSignIn(googleUser) {
-			var profile = googleUser.getBasicProfile();
-			//console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			//console.log('Name: ' + profile.getName());
-			//console.log('Image URL: ' + profile.getImageUrl());
-			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-			startExperiment(true);
-		}
+    </div>
 
-		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-				console.log('User signed out.');
-			});
-		}
-
-		function startExperiment(fromOnSignIn) {
-			var auth2 = gapi.auth2.getAuthInstance();
-			if (auth2.isSignedIn.get()) {
-				var profile = auth2.currentUser.get().getBasicProfile();
-				//console.log('ID: ' + profile.getId());
-				//console.log('Full Name: ' + profile.getName());
-				//console.log('Given Name: ' + profile.getGivenName());
-				//console.log('Family Name: ' + profile.getFamilyName());
-				//console.log('Image URL: ' + profile.getImageUrl());
-				console.log('Email: ' + profile.getEmail());
-				location.href = "experiment.html?" + ['email=' + profile.getEmail()]
-					.join('&');
-			} else if (fromOnSignIn) {
-				alert("로그인에 실패했습니다.");
-			} else {
-				$(".g-signin2 > .abcRioButton").click();
-			}
-		}
-	</script>
-
-    <!-- About Section -->
-    <!--
-    <section id="about" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>About Grayscale</h2>
-            <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-              <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-            <p>This theme features stock photos by
-              <a href="http://gratisography.com/">Gratisography</a>
-              along with a custom Google Maps skin courtesy of
-              <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-            <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+        <!--
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="images/raven_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Raven's APM</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    -->
-    <!-- Download Section -->
-    <!--
-    <section id="download" class="download-section content-section text-center">
-      <div class="container">
-        <div class="col-lg-8 mx-auto">
-          <h2>Download Grayscale</h2>
-          <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-          <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
-        </div>
-      </div>
-    </section>
-    -->
-    <!-- Contact Section -->
-    <!--
-    <section id="contact" class="content-section text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Contact Start Bootstrap</h2>
-            <p>Feel free to leave us a comment on the
-              <a href="http://startbootstrap.com/template-overviews/grayscale/">Grayscale template overview page</a>
-              on Start Bootstrap to give some feedback about this theme!</p>
-            <ul class="list-inline banner-social-buttons">
-              <li class="list-inline-item">
-                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
-                  <i class="fa fa-twitter fa-fw"></i>
-                  <span class="network-name">Twitter</span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-                  <i class="fa fa-github fa-fw"></i>
-                  <span class="network-name">Github</span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg">
-                  <i class="fa fa-google-plus fa-fw"></i>
-                  <span class="network-name">Google+</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    -->
-    <!-- Map Section -->
-    <!--
-    <div id="map"></div>
-    -->
+        -->
+
+      <!-- /.row -->
+
+      <!-- Pagination -->
+      <!--
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+      -->
+    </div>
+    <!-- /.container -->
+
     <!-- Footer -->
-    <footer>
-      <div class="container text-center">
-        <p>Copyright &copy; Your Website 2017</p>
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
       </div>
+      <!-- /.container -->
     </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <!--
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-    -->
-    <!-- Custom scripts for this template -->
-    <script src="js/grayscale.min.js"></script>
 
   </body>
 
