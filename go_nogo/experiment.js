@@ -206,8 +206,8 @@ for (var i = 0; i < num_go_stim; i++) {
   })
 }
   console.log(test_stimuli_block);
-var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 1);
-var test_trials = jsPsych.randomization.repeat(test_stimuli_block, 1);
+var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 8);
+var test_trials = jsPsych.randomization.repeat(test_stimuli_block, 30);
 
 
 
@@ -264,7 +264,7 @@ var instructions_block = {
     trial_id: "instruction"
   },
   pages: [
-    '<div class = centerbox><p class = block-text>이 실험에서는 빨강, 파랑, 초록 사각형이 화면에 나타납니다. <br> You will be told to respond to one of the colored squares by pressing the spacebar. You should only respond to this color and withhold any response to the other color.</p><p class = block-text>If you see the <font color="' + stims[0][0] + '">' + stims[0][0] + '</font> square you should <strong> respond by pressing the spacebar as quickly as possible</strong>. If you see the <font color="' + stims[1][0] + '">' + stims[1][0] + '</font> square you should <strong> not respond</strong>.</p><p class = block-text>We will begin with practice. You will get feedback telling you if you were correct.</p></div>'
+    '<div class = centerbox><p class = block-text>이 실험에서는 빨강, 파랑, 초록 사각형이 화면에 나타납니다. <br><strong>점선</strong>으로 표시된 사각형이 나타나면,  <strong>스페이스 바</strong>를 눌러야하는 과제입니다. 오직 점선 사각형에만 스페이스바를 눌러야하며, 그외의 사각형이 나타나면 어떤 버튼도 눌러서는 안됩니다. </p><p class = block-text>점선 사각형이 나타나면 가능한 빠르게 스페이스바를 누르세요.</p><p class = block-text>연습 시행을 시작합니다. 응답이 정확했는지 피드백에 제공됩니다.</p></div>'
   ],
   allow_keys: false,
   show_clickable_nav: true,
@@ -300,7 +300,7 @@ var end_block = {
     trial_id: "end",
     exp_id: 'go_nogo'
   },
-  text: '<div class = centerbox><p class = center-block-text>이 과제가 끝났습니다.</p><p class = center-block-text><strong>enter</strong>를 눌러 다음 과제를 계속하시오.</p></div>',
+  text: '<div class = centerbox><p class = center-block-text>이 과제가 끝났습니다.</p><p class = center-block-text><strong>enter</strong>를 눌러 실험페이지로 이동하시오.</p></div>',
   cont_key: [13],
   timing_post_trial: 0,
   on_finish: assessPerformance
@@ -312,7 +312,7 @@ var start_test_block = {
   data: {
     trial_id: "test_intro"
   },
-  text: '<div class = centerbox><p class = block-text>연습이 끝났습니다. <br><strong> 이제 실험을 시작합니다.</strong> 실험에서는 피드백이 없습니다. </p><p class = block-text>꼭 기억하세요. 만약 이 자극을 <font color="' + stims[0][0] + '">' + stims[0][0] + '</font> 을 보았다면, <strong> 가능한 빠르게 스페이스 바를 누르세요.</strong>. <br><br>만약 이 자극을 <font color="' + stims[1][0] + '">' + stims[1][0] + '</font> 을 보았다면, <strong> 응답하지 마시오. </strong>. <br> <strong>enter</strong>를 눌러 시작하시오.</p></div>',
+  text: '<div class = centerbox><p class = block-text>연습 시행이 끝났습니다. <br><strong> 이제 실험을 시작합니다.</strong> 본 시행에서는 피드백이 없습니다. </p><p class = block-text>꼭 기억하세요. 만약 <strong>점선 사각형</strong>을 보았다면, <strong> 가능한 빠르게 스페이스 바를 누르세요.</strong>. <br><br>만약  <strong>실선 사각형</strong>을 보았다면, <strong> 응답하지 마시오. </strong>. <br> <strong>enter</strong>를 눌러 시작하시오.</p></div>',
   cont_key: [13],
   timing_post_trial: 1000
 };
