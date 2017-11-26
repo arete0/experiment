@@ -202,8 +202,8 @@ var post_task_block = {
    data: {
        trial_id: "post task questions"
    },
-   questions: ['<p class = center-block-text style = "font-size: 20px">Please summarize what you were asked to do in this task.</p>',
-              '<p class = center-block-text style = "font-size: 20px">Do you have any comments about this task?</p>'],
+   questions: ['<p class = center-block-text style = "font-size: 20px">이 과제에 대해서 궁금한 점이 있다면 적어주세요!</p>',
+              '<p class = center-block-text style = "font-size: 20px">이 과제에 대해서 조언할 것이 있나요?</p>'],
    rows: [15, 15],
    columns: [60,60]
 };
@@ -232,7 +232,7 @@ var instructions_block = {
 		trial_id: "instruction"
 	},
 	pages: [
-		'<div class = centerbox><p class = block-text>이 실험에서는 컬러 단어(빨강, 파랑, 초록)가 한 번에 하나씩 제시됩니다. 단어의 "잉크"도 여러 색으로 표현됩니다. </p><p class = block-text>예를 들어, 다음처럼 여러 색으로 쓰여진 단어들을 볼 수 있습니다:</p><p class = center-block-text><span class = "large" style = "color:blue">빨강</span>, <span class = "large" style = "color:blue">파랑</span>, <span class = "large" style = "color:red">파랑</span>.</p><p class = block-text>단어가 제시되면 단어의 <strong>잉크 색</strong>과 일치하는 버튼을 누르시면 됩니다. <strong>중요한 것은 가능한 빠르고 정확하게 응답하는 것입니다.</strong></p><p class = block-text>응답버튼은 다음과 같습니다:</p>' +
+		'<div class = centerbox><p class = block-text>이 실험에서는 컬러 단어(<font color="red";>빨강</font>, <font color="blue";>파랑</font>, <font color="green";>초록</font>)가 한 번에 하나씩 제시됩니다. 단어의 "잉크"도 여러 색으로 표현됩니다. </p><p class = block-text>예를 들어, 다음처럼 여러 색으로 쓰여진 단어들을 볼 수 있습니다:</p><p class = center-block-text><span class = "large" style = "color:blue">빨강</span>, <span class = "large" style = "color:blue">파랑</span>, <span class = "large" style = "color:red">파랑</span></p><p class = block-text>단어가 제시되면 단어의 <strong>잉크 색</strong>과 일치하는 버튼을 누르시면 됩니다. <strong>중요한 것은 가능한 빠르고 정확하게 응답하는 것입니다.</strong></p><p class = block-text>응답버튼은 다음과 같습니다:</p>' +
 		response_keys + '</div>'
 	],
 	allow_keys: false,
@@ -268,7 +268,7 @@ var end_block = {
     	exp_id: 'stroop'
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = center-block-text>이 과제가 종료되었습니다. 감사합니다!</p><p class = center-block-text><strong>enter</strong>를 누르면 종료됩니다.</p></div>',
+	text: '<div class = centerbox><p class = center-block-text>이 과제가 종료되었습니다. 감사합니다!</p><p class = center-block-text><strong>enter</strong>를 눌러 실험페이지로 이동합니다.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 0,
 	on_finish: assessPerformance
@@ -280,7 +280,7 @@ var start_practice_block = {
 		trial_id: "practice_intro"
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = block-text>연습 시행을 시작합니다. 단어의 <strong>잉크</strong>색과 일치하는 응답키를 누르시오: </p><p class = block-text>빨강색으로 쓰여진 단어는 "r"을, 파랑색으로 쓰여진 단어는 "b"를, 초록색으로 쓰여진 단어는 "g"를 누르시오.</p><p class = block-text><strong>enter</strong>를 눌러 연습을 시작하시오.</p></div>',
+	text: '<div class = centerbox><p class = block-text>연습 시행을 시작합니다. <br><br> 단어의 <strong>잉크</strong>색과 일치하는 응답키를 누르시오: </p><p class = block-text><font color="red;">빨강</font>색으로 쓰여진 단어는 "<strong>R</strong>"을, <font color="blue";>파랑</font>색으로 쓰여진 단어는 "<strong>B</strong>"를, <font color="green";>초록</font>색으로 쓰여진 단어는 "<strong>B</strong>"를 누르시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 연습을 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
 };
@@ -291,7 +291,7 @@ var start_test_block = {
 		trial_id: "test_intro"
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = center-block-text>검사를 시작합니다. 가능한 빠르게 답하시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
+	text: '<div class = centerbox><p class =block-text>검사를 시작합니다. <br><br> 가능한 빠르게 답하시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000,
 	on_finish: function() {
@@ -378,5 +378,5 @@ for (i = 0; i < exp_len; i++) {
 	stroop_experiment.push(test_block)
 }
 stroop_experiment.push(attention_node)
-//stroop_experiment.push(post_task_block)
+stroop_experiment.push(post_task_block)
 stroop_experiment.push(end_block)
