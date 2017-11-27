@@ -312,7 +312,7 @@ var start_test_block = {
   data: {
     trial_id: "test_intro"
   },
-  text: '<div class = centerbox><p class = block-text>연습 시행이 끝났습니다. <br><strong> 이제 실험을 시작합니다.</strong> 본 시행에서는 피드백이 없습니다. </p><p class = block-text>꼭 기억하세요. 만약 <strong>점선 사각형</strong>을 보았다면, <strong> 가능한 빠르게 스페이스 바를 누르세요.</strong>. <br><br>만약  <strong>실선 사각형</strong>을 보았다면, <strong> 응답하지 마시오. </strong>. <br> <strong>enter</strong>를 눌러 시작하시오.</p></div>',
+  text: '<div class = centerbox><p class = block-text>연습 시행이 끝났습니다. <br><strong> 이제 실험을 시작합니다.</strong> 본 시행에서는 피드백이 없습니다. </p><p class = block-text>꼭 기억하세요. 만약 <strong>점선 사각형</strong>을 보았다면, <strong> 가능한 빠르게 스페이스 바를 누르세요</strong>. <br><br>만약  <strong>실선 사각형</strong>을 보았다면, <strong> 응답하지 마시오</strong>. <br> <strong>enter</strong>를 눌러 시작하시오.</p></div>',
   cont_key: [13],
   timing_post_trial: 1000
 };
