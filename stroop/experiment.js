@@ -419,7 +419,6 @@ for (i = 0; i < exp_len; i++) {
 	}
 	stroop_experiment.push(test_block2)
 }
-
 stroop_experiment.push(attention_node)
 stroop_experiment.push(post_task_block)
 stroop_experiment.push(end_block)
