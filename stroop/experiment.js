@@ -294,7 +294,7 @@ var start_practice_block = {
 		trial_id: "practice_intro"
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = block-text>연습 시행을 시작합니다. <br><br> 단어의 <strong>잉크</strong>색과 일치하는 응답키를 누르시오: </p><p class = block-text 빨강색으로 쓰여진 단어는 "<strong>R</strong>"을, 파랑색으로 쓰여진 단어는 "<strong>B</strong>"를, 초록색으로 쓰여진 단어는 "<strong>B</strong>"를 누르시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 연습을 시작하시오.</p></div>',
+	text: '<div class = centerbox><p class = block-text>연습 시행을 시작합니다. <br><br> 단어의 <strong>잉크</strong>색과 일치하는 응답키를 누르시오: </p><p class = block-text> 빨강색으로 쓰여진 단어는 "<strong>R</strong>"을, 파랑색으로 쓰여진 단어는 "<strong>B</strong>"를, 초록색으로 쓰여진 단어는 "<strong>B</strong>"를 누르시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 연습을 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
 };
