@@ -93,7 +93,7 @@
                 "<div class=\"taskname\"><strong></strong></div>" +
                 "<div class=\"inst\">" +
                 "<img src=\"../jspsych-5.0.3/balloon_image/blue/blue" + intB  + ".png\"></img>" +
-                "<p>풍선이 터졌습니다. <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                "<p>풍선이 터졌습니다. <strong>B</strong>를 눌러 계속하세요.</p>" +
                 "</div>" +
                 "</div>";
             }
@@ -103,7 +103,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/blue/blue0" + intB  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
@@ -112,7 +112,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/blue/blue" + intB  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
@@ -181,7 +181,7 @@
                 "<div class=\"taskname\"><strong></strong></div>" +
                 "<div class=\"inst\">" +
                 "<img src=\"../jspsych-5.0.3/balloon_image/orange/orange" + intO  + ".png\"></img>" +
-                "<p>풍선이 터졌습니다. <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                "<p>풍선이 터졌습니다. <strong>B</strong>를 눌러 계속하세요.</p>" +
                 "</div>" +
                 "</div>";
             }
@@ -191,7 +191,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/orange/orange0" + intO  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
@@ -200,7 +200,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/orange/orange" + intO  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
@@ -267,7 +267,7 @@
                 "<div class=\"taskname\"><strong></strong></div>" +
                 "<div class=\"inst\">" +
                 "<img src=\"../jspsych-5.0.3/balloon_image/yellow/yellow" + intY  + ".png\"></img>" +
-                "<p>풍선이 터졌습니다. <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                "<p>풍선이 터졌습니다. <strong>B</strong>를 눌러 계속하세요.</p>" +
                 "</div>" +
                 "</div>";
             }
@@ -277,7 +277,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/yellow/yellow0" + intY  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
@@ -286,7 +286,7 @@
                         "<div class=\"taskname\"><strong></strong></div>" +
                         "<div class=\"inst\">" +
                         "<img src=\"../jspsych-5.0.3/balloon_image/yellow/yellow" + intY  + ".png\"></img>" +
-                        "<p>풍선에 바람을 불어넣으려면 <strong>I</strong> 또는 <strong>B</strong>를 눌러 계속하세요.</p>" +
+                        "<p>풍선에 계속 바람을 불어넣으려면 <strong>I</strong>누르고, 멈추고 입금하려면 <strong>B</strong>를 누르세요.</p>" +
                         "</div>" +
                         "</div>";
                 }
