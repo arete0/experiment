@@ -24,7 +24,7 @@
     <style>
 	  img.resize {
 	  width:700px;
-	  height:200px;
+	  height:400px;
 	}
      </style>
 
@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Web Experiment</a>
+        <a class="navbar-brand" href="#">연구 3</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="#" onclick="location.href='lists.html?' + infotail;" >Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -109,25 +109,25 @@
 	</script>
 
 	    
-    <script>
-        var info = getParticipantInfo();
-        //var filename = [info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
-        var infotail = 'email=' + info.email//['id=' + info.id, 'name=' + info.name, 'email=' + info.email].join('&');
-
-        function getParticipantInfo() {
-            return decodeURI(location.search) // decode query parameters
-              .substring(1) // remove '?'
-              .split('&') // split parameters
-              .map(function (token) {
-            return token.split('='); // split key and value
-              })
-              .reduce(function (out, item) {
-            if (item[0].length == 0) return out;
-            out[item[0]] = item[1];
-            return out;
-              }, {}); // collect into an object
-        }
-    </script>
+<script>		
+	var info = getParticipantInfo();
+	//var filename = [info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+	var infotail = 'email=' + info.email//['id=' + info.id, 'name=' + info.name, 'email=' + info.email].join('&');
+	
+	function getParticipantInfo() {
+	    return decodeURI(location.search) // decode query parameters
+	      .substring(1) // remove '?'
+	      .split('&') // split parameters
+	      .map(function (token) {
+		return token.split('='); // split key and value
+	      })
+	      .reduce(function (out, item) {
+		if (item[0].length == 0) return out;
+		out[item[0]] = item[1];
+		return out;
+	      }, {}); // collect into an object
+	}
+</script>
     <!-- Page Content -->
     <div class="container">
 
@@ -136,20 +136,30 @@
         <small></small>
       </h1>
       <div class="row">
-        <p>연구 3로 이동하시오.</p>
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="Guide3.pdf"><img class="card-img-top" src="images/manual_thumb.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="Guide3.pdf">실험참가 설명</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
       </div>
       <hr>
       <div class="row">
 
+
+
+
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 1"></a>
-            -->
+            <a href="#" onclick="location.href='bart_advice/Start.html?' + infotail;"><img class="card-img-top"  src="images/bart_advice1_thumb.png" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment.html?' + infotail;">연구 1</a>
-                
+                <a href="#" onclick="location.href='bart_advice/Start.html?' + infotail;">BART_ADVICE1</a>
               </h4>
               <p class="card-text"></p>
             </div>
@@ -158,33 +168,65 @@
 
         <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
-            -->
+            <a href="#" onclick="location.href='bart_advice2/Start.html?' + infotail;"><img class="card-img-top"  src="images/bart_advice2_thumb.png" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment2.html?' + infotail;">연구 2</a>
+                <a href="#" onclick="location.href='bart_advice2/Start.html?' + infotail;">BART_ADVICE2</a>
               </h4>
               <p class="card-text"></p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
-            -->
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment3.html?' + infotail;">연구 3</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+
+
+
+
 
       </div>
+
+          <!--
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="images/raven_thumb.png" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Raven's APM</a>
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        -->
+
+      <!-- /.row -->
+
+      <!-- Pagination -->
+      <!--
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+      -->
     </div>
     <!-- /.container -->
 
