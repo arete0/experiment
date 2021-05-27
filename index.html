@@ -67,15 +67,16 @@
                 <i class="fa fa-angle-double-down animated"></i>
                 </a>
                 -->
-                <div class="container">
+              <div class="container">
 
-                  <div class="g-signin2" data-onsuccess="onSignIn" style="visibility: hidden;"></div>
-                  <br>
-                  <a href="#" onclick="signOut();" style="visibility: hidden;">Sign out</a>
-                  <br>
+                <div class="g-signin2" data-onsuccess="onSignIn" style="visibility: hidden;"></div>
+                <br>
+                <a href="#" onclick="signOut();" style="visibility: hidden;">Sign out</a>
+                <br>
 
-                  <button type="button" class="btn btn-primary" color="gray" onclick="startExperiment();">들어가기</button>
-                </div>
+                <button type="button" class="btn btn-primary" color="gray" onclick="startExperiment();">들어가기 (구글 로그인)</button>
+              </div>
+
             </div>
           </div>
         </div>
@@ -125,7 +126,11 @@
 			}
 		}
 	</script>
-
+    <script>
+    window.onload =function () {
+    window.open("popup.html",  "popupNo1", "width=820, height=475");
+    }
+    </script>
     <!-- About Section -->
     <!--
     <section id="about" class="content-section text-center">
