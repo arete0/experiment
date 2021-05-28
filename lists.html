@@ -135,70 +135,89 @@
       <h1 class="my-4">심리학 실험실
         <small></small>
       </h1>
+      <hr>
       <div class="row">
-        <p>연구 2로 이동하시오.</p>
+        <a href="#" onclick="location.href='./resultfile_output/resultfile_test.html?' + infotail;">&nbsp&nbsp 결과파일 생성 테스트</a>
       </div>
       <hr>
       <div class="row">
-
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 1"></a>
-            -->
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment.html?' + infotail;">연구 1</a>
-                
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
-            -->
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment2.html?' + infotail;">연구 2</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
-            -->
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment3.html?' + infotail;">연구 3</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-            <!--
-            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
-            -->
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#" onclick="location.href='experiment4.html?' + infotail;">연구 4</a>
-              </h4>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+        <p><strong>참여할 연구</strong>를 선택하기 위해서, 적합한 참가자 정보를 선택하시오.</p>
       </div>
-    </div>
+      <div class="row">
+        <p><input type="radio" id="aaa" name="abcd" value="00" onchange="setDisplay()"> 경남대학교, </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p><input type="radio" id="bbb" name="abcd" value="10" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석 수강자),</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p><input type="radio" id="ccc" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(공학심리학 수강자)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+      </div>
+      <hr>
+      <div class="row" id="study1">
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <!--
+              <a href="#" onclick="location.href='experiment.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 1"></a>
+              -->
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#" onclick="location.href='experiment.html?' + infotail;">연구 1</a>
+
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row" id="study2">
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <!--
+              <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+              -->
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#" onclick="location.href='experiment2.html?' + infotail;">연구 2</a>
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row" id="study3">
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <!--
+              <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+              -->
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#" onclick="location.href='experiment3.html?' + infotail;">연구 3</a>
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row" id="study4">
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <!--
+              <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+              -->
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#" onclick="location.href='experiment4.html?' + infotail;">연구 4</a>
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <hr>
     <!-- /.container -->
+
+
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
@@ -211,7 +230,26 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+    function setDisplay(){
+      if($('input:radio[id=aaa]').is(':checked')){
+        $('#study1').hide();
+        $('#study2').hide();
+        $('#study3').hide();
+        $('#study4').show();
+      }else if($('input:radio[id=bbb]').is(':checked')){
+        $('#study1').hide();
+        $('#study2').show();
+        $('#study3').show();
+        $('#study4').hide();
+      }else if($('input:radio[id=ccc]').is(':checked')){
+        $('#study1').hide();
+        $('#study2').hide();
+        $('#study3').hide();
+        $('#study4').show();
+      }
+    }
+    </script>
   </body>
 
 </html>
