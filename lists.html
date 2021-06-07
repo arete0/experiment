@@ -191,12 +191,27 @@
               -->
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#" onclick="location.href='experiment3-1.html?' + infotail;">연구 3</a>
+                  <a href="#" onclick="location.href='experiment3.html?' + infotail;">연구 3</a>
                 </h4>
                 <p class="card-text"></p>
               </div>
             </div>
           </div>
+      </div>
+      <div class="row" id="study3-1">
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <!--
+            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+            -->
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='experiment3-1.html?' + infotail;">연구 3-1</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row" id="study4">
           <div class="col-lg-6 portfolio-item">
@@ -236,16 +251,19 @@
         $('#study1').hide();
         $('#study2').hide();
         $('#study3').hide();
+        $('#study3-1').hide();
         $('#study4').show();
       }else if($('input:radio[id=bbb]').is(':checked')){
         $('#study1').hide();
         $('#study2').hide();
-        $('#study3').show();
+        $('#study3').hide();
+        $('#study3-1').show();
         $('#study4').hide();
       }else if($('input:radio[id=ccc]').is(':checked')){
         $('#study1').hide();
         $('#study2').hide();
         $('#study3').hide();
+        $('#study3-1').hide();
         $('#study4').show();
       }
     }
