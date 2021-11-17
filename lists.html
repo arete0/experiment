@@ -144,9 +144,11 @@
         <p><strong>참여할 연구</strong>를 선택하기 위해서, 적합한 참가자 정보를 선택하시오.</p>
       </div>
       <div class="row">
-        <p><input type="radio" id="aaa" name="abcd" value="00" onchange="setDisplay()"> 경남대학교, </p>
+        <p><input type="radio" id="ddd" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(심리통계[김영준] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-        <p><input type="radio" id="bbb" name="abcd" value="10" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석[김영준] 수강자),</p>
+        <p><input type="radio" id="aaa" name="abcd" value="00" onchange="setDisplay()"> 경남대학교 </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p><input type="radio" id="bbb" name="abcd" value="10" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석[김영준] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="ccc" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(학습심리학[김영일], 인지공학심리학[김영일] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
@@ -228,6 +230,21 @@
             </div>
           </div>
       </div>
+      <div class="row" id="study5">
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <!--
+            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+            -->
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='experiment5.html?' + infotail;">연구 5</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+    </div>
 
       <hr>
     <!-- /.container -->
@@ -253,18 +270,28 @@
         $('#study3').hide();
         $('#study3-1').hide();
         $('#study4').show();
+        $('#study5').hide();
       }else if($('input:radio[id=bbb]').is(':checked')){
         $('#study1').hide();
         $('#study2').hide();
         $('#study3').hide();
         $('#study3-1').show();
         $('#study4').hide();
+        $('#study5').hide();
       }else if($('input:radio[id=ccc]').is(':checked')){
         $('#study1').hide();
         $('#study2').hide();
         $('#study3').hide();
         $('#study3-1').hide();
         $('#study4').show();
+        $('#study5').hide();
+      }else if($('input:radio[id=ddd]').is(':checked')){
+        $('#study1').hide();
+        $('#study2').hide();
+        $('#study3').hide();
+        $('#study3-1').hide();
+        $('#study4').hide();
+        $('#study5').show();
       }
     }
     </script>
