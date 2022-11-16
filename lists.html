@@ -63,50 +63,50 @@
 
       </div>
     </nav>
-<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	    crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-	    crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-	    crossorigin="anonymous"></script>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script>
-		function onSignIn(googleUser) {
-			var profile = googleUser.getBasicProfile();
-			//console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			//console.log('Name: ' + profile.getName());
-			//console.log('Image URL: ' + profile.getImageUrl());
-			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-			//startExperiment(true);
-		}
-		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-				console.log('User signed out.');
-				location.href = "https://arete0.github.io/experiment/";
-			});
-		}
-		function startExperiment(fromOnSignIn) {
-			var auth2 = gapi.auth2.getAuthInstance();
-			if (auth2.isSignedIn.get()) {
-				var profile = auth2.currentUser.get().getBasicProfile();
-				//console.log('ID: ' + profile.getId());
-				//console.log('Full Name: ' + profile.getName());
-				//console.log('Given Name: ' + profile.getGivenName());
-				//console.log('Family Name: ' + profile.getFamilyName());
-				//console.log('Image URL: ' + profile.getImageUrl());
-				console.log('Email: ' + profile.getEmail());
-				location.href = "experiment.html?" + ['email=' + profile.getEmail()]
-					.join('&');
-			} else if (fromOnSignIn) {
-				alert("로그인에 실패했습니다.");
-			} else {
-				$(".g-signin2 > .abcRioButton").click();
-			}
-		}
-	</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        //console.log('Name: ' + profile.getName());
+        //console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        //startExperiment(true);
+      }
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          location.href = "https://arete0.github.io/experiment/";
+        });
+      }
+      function startExperiment(fromOnSignIn) {
+        var auth2 = gapi.auth2.getAuthInstance();
+        if (auth2.isSignedIn.get()) {
+          var profile = auth2.currentUser.get().getBasicProfile();
+          //console.log('ID: ' + profile.getId());
+          //console.log('Full Name: ' + profile.getName());
+          //console.log('Given Name: ' + profile.getGivenName());
+          //console.log('Family Name: ' + profile.getFamilyName());
+          //console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail());
+          location.href = "experiment.html?" + ['email=' + profile.getEmail()]
+            .join('&');
+        } else if (fromOnSignIn) {
+          alert("로그인에 실패했습니다.");
+        } else {
+          $(".g-signin2 > .abcRioButton").click();
+        }
+      }
+    </script>
 
 	    
     <script>
@@ -144,18 +144,22 @@
         <p><strong>참여할 연구</strong>를 선택하기 위해서, 적합한 참가자 정보를 선택하시오.</p>
       </div>
       <div class="row">
-        <p><input type="radio" id="ddd" name="abcd" value="20" onchange="setDisplay()"> 가천대학교(언어심리학 수강자)</p>
+        <p><input type="radio" id="s2022" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(심리학이란 무엇인가 수강자)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p><input type="radio" id="s2022" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(동기와 정서 수강자)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p><input type="radio" id="ddd" name="abcd" value="10" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석[김영준] 수강자)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <!-- <p><input type="radio" id="ddd" name="abcd" value="20" onchange="setDisplay()"> 가천대학교(언어심리학 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="ddd" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(심리통계2[김영준] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="aaa" name="abcd" value="00" onchange="setDisplay()"> 경남대학교 </p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
-        <p><input type="radio" id="ddd" name="abcd" value="10" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석[김영준] 수강자)</p>
-        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="ddd" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(인지심리학[김영일], 인지공학심리학[김영일] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="eee" name="abcd" value="30" onchange="setDisplay()"> 실습 - 아주대학교(인지심리학[김영일] 수강자)</p>
-        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p> -->
       </div>
       <hr>
       <div class="row" id="practice1">
@@ -173,7 +177,7 @@
             </div>
           </div>
         </div>
-    </div>
+      </div>
       <div class="row" id="study1">
           <div class="col-lg-6 portfolio-item">
             <div class="card h-100">
@@ -264,9 +268,24 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row" id="study6">
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <!--
+            <a href="#" onclick="location.href='experiment2.html?' + infotail;"><img class="card-img-top" src="images/" alt="연구 2"></a>
+            -->
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='experiment6.html?' + infotail;">연구 6</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-      <hr>
+    <hr>
     <!-- /.container -->
 
 
@@ -292,6 +311,7 @@
         $('#study3-1').hide();
         $('#study4').show();
         $('#study5').hide();
+        $('#study6').hide();
       }else if($('input:radio[id=bbb]').is(':checked')){
         $('#practice1').hide();
         $('#study1').hide();
@@ -300,6 +320,7 @@
         $('#study3-1').show();
         $('#study4').hide();
         $('#study5').hide();
+        $('#study6').hide();
       }else if($('input:radio[id=ccc]').is(':checked')){
         $('#practice1').hide();
         $('#study1').hide();
@@ -308,6 +329,7 @@
         $('#study3-1').hide();
         $('#study4').show();
         $('#study5').hide();
+        $('#study6').hide();
       }else if($('input:radio[id=ddd]').is(':checked')){
         $('#practice1').hide();
         $('#study1').hide();
@@ -316,6 +338,7 @@
         $('#study3-1').hide();
         $('#study4').hide();
         $('#study5').show();
+        $('#study6').hide();
       }else if($('input:radio[id=eee]').is(':checked')){
         $('#practice1').show();
         $('#study1').hide();
@@ -324,6 +347,16 @@
         $('#study3-1').hide();
         $('#study4').hide();
         $('#study5').hide();
+        $('#study6').hide();
+      }else if($('input:radio[id=2022]').is(':checked')){
+        $('#practice1').hide();
+        $('#study1').hide();
+        $('#study2').hide();
+        $('#study3').hide();
+        $('#study3-1').hide();
+        $('#study4').hide();
+        $('#study5').hide();
+        $('#study6').show();
       }
     }
     </script>
