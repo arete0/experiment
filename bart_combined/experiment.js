@@ -1,3 +1,5 @@
+    // debug = 1, full = 7
+    var lastnum = 7; 
 
 	var rest_block = {
       type: 'poldrack-text',
@@ -9,6 +11,17 @@
       cont_key: [13],
       timing_post_trial: 1000
     };
+	var cession_block = {
+        type: 'poldrack-text',
+        data: {
+          trial_id: "rest"
+        },
+        timing_response: 180000,
+        text: '<div class = centerbox><p class = center-block-text>첫번째 세션이 끝났습니다. </p><p class = center-block-text> 잠시 편하게 쉬세요! 다시 시작할 준비가 되었다면, <strong>enter</strong>를 누르세요.</p></div>',
+        cont_key: [13],
+        timing_post_trial: 1000
+    };
+
     var rest_block2 = {
       type: 'poldrack-text',
       data: {
@@ -57,7 +70,7 @@
 		"<div class=\"taskname\"><strong>1 단계</strong></div>" +
 		"<div class=\"inst\">" +
 		"<p>첫번째 단계입니다.</p><br><p>이 풍선과제에서는 조언자가 조언을 해줍니다. <br><br> 조언의 방식은 각 풍선마다 최대로 누를 수 있는 수를 <strong>네개의 구간</strong>으로 나누어 <br><br> 어느 구간에서 터질 가능성이 높은지에 대한 예측정보를 알려줍니다. </p> " +
-		"예를 들어, 최대 100번까지 가능해서 1~100번사이에 터질 수 있는 어떤 색의 풍선이 있을때, 네개의 구간으로 나누어 조언하게 됩니다. <br><br>1구간은 1~25, 2구간은 26~50, 3구간은 51~75, 4구간은 76~100이 됩니다." +
+		"예를 들어, 어떤 색의 풍선이 최대 100번까지 바람을 불어넣을 수 있다면, 네개의 구간으로 나누어 조언하게 됩니다. <br><br>1구간은 1~25, 2구간은 26~50, 3구간은 51~75, 4구간은 76~100이 됩니다." +
 		"<p>단, 예측 정보의 정확성은 단계마다 달라집니다. 모두 정확히 예측할수도 있고, 그렇지 못할 수도 있습니다. </p>" +
 		"<p>예측정보는 풍선누르기 전에 나타납니다. 잘 읽고 최대한 많은 수익금을 얻도록 노력하세요!</p>"  +
 		"</div>" +
@@ -268,38 +281,38 @@
 	};
 
 	var tickets = {
-	timeline: [ticketsText],
-		timing_post_trial: 0,
-		loop_function: function(data){
-			if(jsPsych.pluginAPI.convertKeyCharacterToKeyCode('c') == data[0].key_press){
-				lastRound=0;
-				tempTickets=0;
-				intO=0;
-				opop=0;
-				intB=0;
-				bpop=0;
-				intY=0;
-				ypop=0;
-				return false;
-			}
-			else {
-				return true;
-			}
-		}
+        timeline: [ticketsText],
+        timing_post_trial: 0,
+        loop_function: function(data){
+            if(jsPsych.pluginAPI.convertKeyCharacterToKeyCode('c') == data[0].key_press){
+                lastRound=0;
+                tempTickets=0;
+                intO=0;
+                opop=0;
+                intB=0;
+                bpop=0;
+                intY=0;
+                ypop=0;
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
 	}
 
 	var blue_rand = [],
-	blue_count = 0,
-		orange_rand = [],
-	orange_count = 0,
-		yellow_rand = [],
-	yellow_count = 0,
-	blue_count2=0,
-	blue_count3=0,
-	orange_count2=0,
-	orange_count3=0,
-	yellow_count2=0,
-	yellow_count3=0;
+        blue_count = 0,
+        orange_rand = [],
+        orange_count = 0,
+        yellow_rand = [],
+        yellow_count = 0,
+        blue_count2=0,
+        blue_count3=0,
+        orange_count2=0,
+        orange_count3=0,
+        yellow_count2=0,
+        yellow_count3=0;
 
 	for (var j = 0; j < 7; j ++){
 		blue_rand.push(Math.floor((Math.random()*46)+1));
@@ -719,10 +732,11 @@
 
     for (var m = 0; m < 3; m++){
 
-        for (var i = 0; i < 7; i++){ // total trials
+        //100% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
             var res = [1,2,3];
 
-
+            
             for (var j = 0; j < 3; j++){
                 var rand = Math.floor((Math.random()*res.length));
                 var val = res[rand];
@@ -803,76 +817,77 @@
         }
         test_block1.timeline.push(response_block)
 
+        //71% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
+            var res = [1,2,3];
 
-        for (var i = 0; i < 7; i++){ // total trials
-                var res = [1,2,3];
+            
+            for (var j = 0; j < 3; j++){
+                var rand = Math.floor((Math.random()*res.length));
+                var val = res[rand];
+                res.splice(rand,1);
 
-                for (var j = 0; j < 3; j++){
-                    var rand = Math.floor((Math.random()*res.length));
-                    var val = res[rand];
-                    res.splice(rand,1);
-
-                    //71% trusted phase
-                    if(val == 1){
-                        if(orange71Array[i] == 1) {
-                            test_block2.timeline.push(Bet_advices1);
-                        }
-                        else if(orange71Array[i] == 2) {
-                            test_block2.timeline.push(Bet_advices2);
-
-                        }
-                        else if(orange71Array[i] == 3) {
-                            test_block2.timeline.push(Bet_advices3);
-
-                        }
-                        else if(orange71Array[i] == 4) {
-                            test_block2.timeline.push(Bet_advices4);
-
-                        }
-                        test_block2.timeline.push(orange_trial);
+                //71% trusted phase
+                if(val == 1){
+                    if(orange71Array[i] == 1) {
+                        test_block2.timeline.push(Bet_advices1);
                     }
-                    else if(val == 2){
-                        if(blue71Array[i] == 1) {
-                            test_block2.timeline.push(Bet_advices1);
+                    else if(orange71Array[i] == 2) {
+                        test_block2.timeline.push(Bet_advices2);
 
-                        }
-                        else if(blue71Array[i] == 2) {
-                            test_block2.timeline.push(Bet_advices2);
-
-                        }
-                        else if(blue71Array[i] == 3) {
-                            test_block2.timeline.push(Bet_advices3);
-
-                        }
-                        else if(blue71Array[i] == 4) {
-                            test_block2.timeline.push(Bet_advices4);
-
-                        }
-                        test_block2.timeline.push(blue_trial);
                     }
-                    else{
-                        if(yellow71Array[i] == 1) {
-                            test_block2.timeline.push(Bet_advices1);
+                    else if(orange71Array[i] == 3) {
+                        test_block2.timeline.push(Bet_advices3);
 
-                        }
-                        else if(blue71Array[i] == 2) {
-                            test_block2.timeline.push(Bet_advices2);
-
-                        }
-                        else if(blue71Array[i] == 3) {
-                            test_block2.timeline.push(Bet_advices3);
-
-                        }
-                        else if(blue71Array[i] == 4) {
-                            test_block2.timeline.push(Bet_advices4);
-
-                        }
-                        test_block2.timeline.push(yellow_trial);
                     }
-                    test_block2.timeline.push(tickets);
+                    else if(orange71Array[i] == 4) {
+                        test_block2.timeline.push(Bet_advices4);
 
+                    }
+                    test_block2.timeline.push(orange_trial);
                 }
+                else if(val == 2){
+                    if(blue71Array[i] == 1) {
+                        test_block2.timeline.push(Bet_advices1);
+
+                    }
+                    else if(blue71Array[i] == 2) {
+                        test_block2.timeline.push(Bet_advices2);
+
+                    }
+                    else if(blue71Array[i] == 3) {
+                        test_block2.timeline.push(Bet_advices3);
+
+                    }
+                    else if(blue71Array[i] == 4) {
+                        test_block2.timeline.push(Bet_advices4);
+
+                    }
+                    test_block2.timeline.push(blue_trial);
+                }
+                else{
+                    if(yellow71Array[i] == 1) {
+                        test_block2.timeline.push(Bet_advices1);
+
+                    }
+                    else if(blue71Array[i] == 2) {
+                        test_block2.timeline.push(Bet_advices2);
+
+                    }
+                    else if(blue71Array[i] == 3) {
+                        test_block2.timeline.push(Bet_advices3);
+
+                    }
+                    else if(blue71Array[i] == 4) {
+                        test_block2.timeline.push(Bet_advices4);
+
+                    }
+                    test_block2.timeline.push(yellow_trial);
+                }
+                test_block2.timeline.push(tickets);
+
             }
+        }
 
         var response_block = {
             type: 'survey-text',
@@ -885,76 +900,77 @@
             }
         }
         test_block2.timeline.push(response_block)
+        
+        //42% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
+            var res = [1,2,3];
 
-        for (var i = 0; i < 7; i++){ // total trials
-                var res = [1,2,3];
+            
+            for (var j = 0; j < 3; j++){
+                var rand = Math.floor((Math.random()*res.length));
+                var val = res[rand];
+                res.splice(rand,1);
 
-
-                for (var j = 0; j < 3; j++){
-                    var rand = Math.floor((Math.random()*res.length));
-                    var val = res[rand];
-                    res.splice(rand,1);
-
-                    //42% trusted phase
-                    if(val == 1){
-                        if(orange42Array[i] == 1) {
-                            test_block3.timeline.push(Bet_advices1);
-                        }
-                        else if(orange42Array[i] == 2) {
-                            test_block3.timeline.push(Bet_advices2);
-
-                        }
-                        else if(orange42Array[i] == 3) {
-                            test_block3.timeline.push(Bet_advices3);
-
-                        }
-                        else if(orange42Array[i] == 4) {
-                            test_block3.timeline.push(Bet_advices4);
-
-                        }
-                        test_block3.timeline.push(orange_trial);
+                //42% trusted phase
+                if(val == 1){
+                    if(orange42Array[i] == 1) {
+                        test_block3.timeline.push(Bet_advices1);
                     }
-                    else if(val == 2){
-                        if(blue42Array[i] == 1) {
-                            test_block3.timeline.push(Bet_advices1);
+                    else if(orange42Array[i] == 2) {
+                        test_block3.timeline.push(Bet_advices2);
 
-                        }
-                        else if(blue42Array[i] == 2) {
-                            test_block3.timeline.push(Bet_advices2);
-
-                        }
-                        else if(blue42Array[i] == 3) {
-                            test_block3.timeline.push(Bet_advices3);
-
-                        }
-                        else if(blue42Array[i] == 4) {
-                            test_block3.timeline.push(Bet_advices4);
-
-                        }
-                        test_block3.timeline.push(blue_trial);
                     }
-                    else{
-                        if(yellow42Array[i] == 1) {
-                            test_block3.timeline.push(Bet_advices1);
+                    else if(orange42Array[i] == 3) {
+                        test_block3.timeline.push(Bet_advices3);
 
-                        }
-                        else if(yellow42Array[i] == 2) {
-                            test_block3.timeline.push(Bet_advices2);
-
-                        }
-                        else if(yellow42Array[i] == 3) {
-                            test_block3.timeline.push(Bet_advices3);
-
-                        }
-                        else if(yellow42Array[i] == 4) {
-                            test_block3.timeline.push(Bet_advices4);
-
-                        }
-                        test_block3.timeline.push(yellow_trial);
                     }
-                    test_block3.timeline.push(tickets);
+                    else if(orange42Array[i] == 4) {
+                        test_block3.timeline.push(Bet_advices4);
 
+                    }
+                    test_block3.timeline.push(orange_trial);
                 }
+                else if(val == 2){
+                    if(blue42Array[i] == 1) {
+                        test_block3.timeline.push(Bet_advices1);
+
+                    }
+                    else if(blue42Array[i] == 2) {
+                        test_block3.timeline.push(Bet_advices2);
+
+                    }
+                    else if(blue42Array[i] == 3) {
+                        test_block3.timeline.push(Bet_advices3);
+
+                    }
+                    else if(blue42Array[i] == 4) {
+                        test_block3.timeline.push(Bet_advices4);
+
+                    }
+                    test_block3.timeline.push(blue_trial);
+                }
+                else{
+                    if(yellow42Array[i] == 1) {
+                        test_block3.timeline.push(Bet_advices1);
+
+                    }
+                    else if(yellow42Array[i] == 2) {
+                        test_block3.timeline.push(Bet_advices2);
+
+                    }
+                    else if(yellow42Array[i] == 3) {
+                        test_block3.timeline.push(Bet_advices3);
+
+                    }
+                    else if(yellow42Array[i] == 4) {
+                        test_block3.timeline.push(Bet_advices4);
+
+                    }
+                    test_block3.timeline.push(yellow_trial);
+                }
+                test_block3.timeline.push(tickets);
+
+            }
         }
         var response_block = {
             type: 'survey-text',
@@ -1029,7 +1045,7 @@
 		"<div class=\"taskname\"><strong>1 단계</strong></div>" +
 		"<div class=\"inst\">" +
 		"<p>첫번째 단계입니다.</p><br><p>이 풍선과제에서는 조언자가 조언을 해줍니다. <br><br> 조언의 방식은 각 풍선마다 최대로 누를 수 있는 수를 <strong>네개의 구간</strong>으로 나누어 <br><br> 어느 구간에서 터질 가능성이 높은지에 대한 예측정보를 알려줍니다. </p> " +
-		"예를 들어, 최대 100번까지 가능해서 1~100번사이에 터질 수 있는 어떤 색의 풍선이 있을때, 네개의 구간으로 나누어 조언하게 됩니다. <br><br>1구간은 1~25, 2구간은 26~50, 3구간은 51~75, 4구간은 76~100이 됩니다." +
+		"예를 들어, 어떤 색의 풍선이 최대 100번까지 바람을 불어넣을 수 있다면, 네개의 구간으로 나누어 조언하게 됩니다. <br><br>1구간은 1~25, 2구간은 26~50, 3구간은 51~75, 4구간은 76~100이 됩니다." +
 		"<p>단, 예측 정보의 정확성은 단계마다 달라집니다. 모두 정확히 예측할수도 있고, 그렇지 못할 수도 있습니다. </p>" +
 		"<p>예측정보는 풍선누르기 전에 나타납니다. 잘 읽고 최대한 많은 수익금을 얻도록 노력하세요!</p>"  +
 		"</div>" +
@@ -1078,10 +1094,12 @@
 		"<p>두 조언을 잘 보고 결정하세요.</p>" +
 		"<div class=\"advgap_left_b\"></div>" +
 		"<div class=\"adv1_b\">" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/LMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>이번엔 <strong>4</strong> 구간에서 터질 것 같습니다. 이번이 기회입니다. 베팅하세요! </p>" +
 		"</div>" +
 		"<div class=\"advgap_center_b\"></div>" +
 		"<div class=\"adv2_b\" >" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/RMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>저의 분석에도 <strong>4</strong> 구간에서 터질 것 같습니다. 이번이 기회입니다. 베팅하세요! </p>" +
 		"</div>" +
 		"<div class=\"clear\"></div>" +
@@ -1100,10 +1118,12 @@
 		"<p>두 조언을 잘 보고 결정하세요.</p>" +
 		"<div class=\"advgap_left_b\"></div>" +
 		"<div class=\"adv1_b\">" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/LMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>이번엔 <strong>3</strong> 구간에서 터질 것 같습니다. 이번이 기회입니다. 베팅하세요! </p>" +
 		"</div>" +
 		"<div class=\"advgap_center_b\"></div>" +
 		"<div class=\"adv2_b\" >" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/RMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>저의 분석에도 <strong>3</strong> 구간에서 터질 것 같습니다. 이번이 기회입니다. 베팅하세요! </p>" +
 		"</div>" +
 		"<div class=\"clear\"></div>" +
@@ -1123,10 +1143,12 @@
 		"<p>두 조언을 잘 보고 결정하세요.</p>" +
 		"<div class=\"advgap_left_b\"></div>" +
 		"<div class=\"adv1_b\">" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/LMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>이번엔 <strong>2</strong> 구간에서 터질 것 같습니다. 주의하세요! </p>" +
 		"</div>" +
 		"<div class=\"advgap_center_b\"></div>" +
 		"<div class=\"adv2_b\" >" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/RMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>저의 분석에도 <strong>2</strong> 구간에서 터질 것 같습니다. 주의하세요! </p>" +
 		"</div>" +
 		"<div class=\"clear\"></div>" +
@@ -1146,10 +1168,12 @@
 		"<p>두 조언을 잘 보고 결정하세요.</p>" +
 		"<div class=\"advgap_left_b\"></div>" +
 		"<div class=\"adv1_b\">" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/LMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>이번엔 <strong>1</strong> 구간에서 터질 것 같습니다. 주의하세요! </p>" +
 		"</div>" +
 		"<div class=\"advgap_center_b\"></div>" +
 		"<div class=\"adv2_b\" >" +
+		"<img src=\"../jspsych-5.0.3/balloon_image/RMan.png\" style=\"width: 100px; height: auto;\"></img>" +
 		"<p>저의 분석에도 <strong>1</strong> 구간에서 터질 것 같습니다. 주의하세요! </p>" +
 		"</div>" +
 		"<div class=\"clear\"></div>" +
@@ -1694,28 +1718,30 @@ var test_block1_b = {
     yellow71Array[4] = 4;
     yellow71Array[6] = 4;
     // 42% each 1, 4, 6 trials
-     blue42Array[1] = 4;
-     blue42Array[2] = 4;
-     blue42Array[4] = 4;
-     blue42Array[6] = 4;
-     orange42Array[2] = 4;
-     orange42Array[3] = 4;
-     orange42Array[4] = 4;
-     orange42Array[5] = 4;
-     yellow42Array[1] = 4;
-     yellow42Array[3] = 4;
-     yellow42Array[5] = 4;
-     yellow42Array[6] = 4;
+    blue42Array[1] = 4;
+    blue42Array[2] = 4;
+    blue42Array[4] = 4;
+    blue42Array[6] = 4;
+    orange42Array[2] = 4;
+    orange42Array[3] = 4;
+    orange42Array[4] = 4;
+    orange42Array[5] = 4;
+    yellow42Array[1] = 4;
+    yellow42Array[3] = 4;
+    yellow42Array[5] = 4;
+    yellow42Array[6] = 4;
 
 
 	//var adviserArray = trustedArray;
 
-    for (var m = 0; m < 3; m++){
 
-        for (var i = 0; i < 7; i++){ // total trials
+
+    for (var m = 0; m < 3; m++){
+        //100% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
             var res = [1,2,3];
 
-
+            
             for (var j = 0; j < 3; j++){
                 var rand = Math.floor((Math.random()*res.length));
                 var val = res[rand];
@@ -1783,183 +1809,223 @@ var test_block1_b = {
 
             }
         }
-
-        var response_block = {
+        
+        var response_block_L = {
             type: 'survey-text',
             questions: [
-                ['<p class = center-block-text>예측정보를 제공한 조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+                ['<p class = center-block-text>예측정보를 제공한 A(왼쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
             ],
             data: {
                 trial_id: 'response',
-                exp_stage: 'test1'
+                exp_stage: 'test1L'
             }
         }
-        test_block1_b.timeline.push(response_block)
+    
+        var response_block_R = {
+            type: 'survey-text',
+            questions: [
+                ['<p class = center-block-text>예측정보를 제공한 B(오른쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+            ],
+            data: {
+                trial_id: 'response',
+                exp_stage: 'test1R'
+            }
+        }
+        test_block1_b.timeline.push(response_block_L)
+        test_block1_b.timeline.push(response_block_R)
 
+        //71% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
+            var res = [1,2,3];
 
-        for (var i = 0; i < 7; i++){ // total trials
-                var res = [1,2,3];
+            
+            for (var j = 0; j < 3; j++){
+                var rand = Math.floor((Math.random()*res.length));
+                var val = res[rand];
+                res.splice(rand,1);
 
-                for (var j = 0; j < 3; j++){
-                    var rand = Math.floor((Math.random()*res.length));
-                    var val = res[rand];
-                    res.splice(rand,1);
-
-                    //71% trusted phase
-                    if(val == 1){
-                        if(orange71Array[i] == 1) {
-                            test_block2_b.timeline.push(Bet_advices1_b);
-                        }
-                        else if(orange71Array[i] == 2) {
-                            test_block2_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(orange71Array[i] == 3) {
-                            test_block2_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(orange71Array[i] == 4) {
-                            test_block2_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block2_b.timeline.push(orange_trial);
+                //71% trusted phase
+                if(val == 1){
+                    if(orange71Array[i] == 1) {
+                        test_block2_b.timeline.push(Bet_advices1_b);
                     }
-                    else if(val == 2){
-                        if(blue71Array[i] == 1) {
-                            test_block2_b.timeline.push(Bet_advices1_b);
+                    else if(orange71Array[i] == 2) {
+                        test_block2_b.timeline.push(Bet_advices2_b);
 
-                        }
-                        else if(blue71Array[i] == 2) {
-                            test_block2_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(blue71Array[i] == 3) {
-                            test_block2_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(blue71Array[i] == 4) {
-                            test_block2_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block2_b.timeline.push(blue_trial);
                     }
-                    else{
-                        if(yellow71Array[i] == 1) {
-                            test_block2_b.timeline.push(Bet_advices1_b);
+                    else if(orange71Array[i] == 3) {
+                        test_block2_b.timeline.push(Bet_advices3_b);
 
-                        }
-                        else if(blue71Array[i] == 2) {
-                            test_block2_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(blue71Array[i] == 3) {
-                            test_block2_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(blue71Array[i] == 4) {
-                            test_block2_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block2_b.timeline.push(yellow_trial);
                     }
-                    test_block2_b.timeline.push(tickets);
+                    else if(orange71Array[i] == 4) {
+                        test_block2_b.timeline.push(Bet_advices4_b);
 
+                    }
+                    test_block2_b.timeline.push(orange_trial);
                 }
-            }
+                else if(val == 2){
+                    if(blue71Array[i] == 1) {
+                        test_block2_b.timeline.push(Bet_advices1_b);
 
-        var response_block = {
-            type: 'survey-text',
-            questions: [
-                ['<p class = center-block-text>예측정보를 제공한 조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
-            ],
-            data: {
-                trial_id: 'response',
-                exp_stage: 'test2'
-            }
-        }
-        test_block2_b.timeline.push(response_block)
-
-        for (var i = 0; i < 7; i++){ // total trials
-                var res = [1,2,3];
-
-
-                for (var j = 0; j < 3; j++){
-                    var rand = Math.floor((Math.random()*res.length));
-                    var val = res[rand];
-                    res.splice(rand,1);
-
-                    //42% trusted phase
-                    if(val == 1){
-                        if(orange42Array[i] == 1) {
-                            test_block3_b.timeline.push(Bet_advices1_b);
-                        }
-                        else if(orange42Array[i] == 2) {
-                            test_block3_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(orange42Array[i] == 3) {
-                            test_block3_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(orange42Array[i] == 4) {
-                            test_block3_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block3_b.timeline.push(orange_trial);
                     }
-                    else if(val == 2){
-                        if(blue42Array[i] == 1) {
-                            test_block3_b.timeline.push(Bet_advices1_b);
+                    else if(blue71Array[i] == 2) {
+                        test_block2_b.timeline.push(Bet_advices2_b);
 
-                        }
-                        else if(blue42Array[i] == 2) {
-                            test_block3_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(blue42Array[i] == 3) {
-                            test_block3_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(blue42Array[i] == 4) {
-                            test_block3_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block3_b.timeline.push(blue_trial);
                     }
-                    else{
-                        if(yellow42Array[i] == 1) {
-                            test_block3_b.timeline.push(Bet_advices1_b);
+                    else if(blue71Array[i] == 3) {
+                        test_block2_b.timeline.push(Bet_advices3_b);
 
-                        }
-                        else if(yellow42Array[i] == 2) {
-                            test_block3_b.timeline.push(Bet_advices2_b);
-
-                        }
-                        else if(yellow42Array[i] == 3) {
-                            test_block3_b.timeline.push(Bet_advices3_b);
-
-                        }
-                        else if(yellow42Array[i] == 4) {
-                            test_block3_b.timeline.push(Bet_advices4_b);
-
-                        }
-                        test_block3_b.timeline.push(yellow_trial);
                     }
-                    test_block3_b.timeline.push(tickets);
+                    else if(blue71Array[i] == 4) {
+                        test_block2_b.timeline.push(Bet_advices4_b);
 
+                    }
+                    test_block2_b.timeline.push(blue_trial);
                 }
+                else{
+                    if(yellow71Array[i] == 1) {
+                        test_block2_b.timeline.push(Bet_advices1_b);
+
+                    }
+                    else if(blue71Array[i] == 2) {
+                        test_block2_b.timeline.push(Bet_advices2_b);
+
+                    }
+                    else if(blue71Array[i] == 3) {
+                        test_block2_b.timeline.push(Bet_advices3_b);
+
+                    }
+                    else if(blue71Array[i] == 4) {
+                        test_block2_b.timeline.push(Bet_advices4_b);
+
+                    }
+                    test_block2_b.timeline.push(yellow_trial);
+                }
+                test_block2_b.timeline.push(tickets);
+
+            }
         }
-        var response_block = {
+        
+        var response_block_L = {
             type: 'survey-text',
             questions: [
-                ['<p class = center-block-text>예측정보를 제공한 조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+                ['<p class = center-block-text>예측정보를 제공한 A(왼쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
             ],
             data: {
                 trial_id: 'response',
-                exp_stage: 'test3'
+                exp_stage: 'test2L'
             }
         }
-        test_block3_b.timeline.push(response_block)
+    
+        var response_block_R = {
+            type: 'survey-text',
+            questions: [
+                ['<p class = center-block-text>예측정보를 제공한 B(오른쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+            ],
+            data: {
+                trial_id: 'response',
+                exp_stage: 'test2R'
+            }
+        }
+        test_block2_b.timeline.push(response_block_L)
+        test_block2_b.timeline.push(response_block_R)
+        
+        //42% trusted phase
+        for (var i = 0; i < lastnum; i++){ // total trials
+            var res = [1,2,3];
+
+            
+            for (var j = 0; j < 3; j++){
+                var rand = Math.floor((Math.random()*res.length));
+                var val = res[rand];
+                res.splice(rand,1);
+
+                //42% trusted phase
+                if(val == 1){
+                    if(orange42Array[i] == 1) {
+                        test_block3_b.timeline.push(Bet_advices1_b);
+                    }
+                    else if(orange42Array[i] == 2) {
+                        test_block3_b.timeline.push(Bet_advices2_b);
+
+                    }
+                    else if(orange42Array[i] == 3) {
+                        test_block3_b.timeline.push(Bet_advices3_b);
+
+                    }
+                    else if(orange42Array[i] == 4) {
+                        test_block3_b.timeline.push(Bet_advices4_b);
+
+                    }
+                    test_block3_b.timeline.push(orange_trial);
+                }
+                else if(val == 2){
+                    if(blue42Array[i] == 1) {
+                        test_block3_b.timeline.push(Bet_advices1_b);
+
+                    }
+                    else if(blue42Array[i] == 2) {
+                        test_block3_b.timeline.push(Bet_advices2_b);
+
+                    }
+                    else if(blue42Array[i] == 3) {
+                        test_block3_b.timeline.push(Bet_advices3_b);
+
+                    }
+                    else if(blue42Array[i] == 4) {
+                        test_block3_b.timeline.push(Bet_advices4_b);
+
+                    }
+                    test_block3_b.timeline.push(blue_trial);
+                }
+                else{
+                    if(yellow42Array[i] == 1) {
+                        test_block3_b.timeline.push(Bet_advices1_b);
+
+                    }
+                    else if(yellow42Array[i] == 2) {
+                        test_block3_b.timeline.push(Bet_advices2_b);
+
+                    }
+                    else if(yellow42Array[i] == 3) {
+                        test_block3_b.timeline.push(Bet_advices3_b);
+
+                    }
+                    else if(yellow42Array[i] == 4) {
+                        test_block3_b.timeline.push(Bet_advices4_b);
+
+                    }
+                    test_block3_b.timeline.push(yellow_trial);
+                }
+                test_block3_b.timeline.push(tickets);
+
+            }
+        }
+
+        var response_block_L = {
+            type: 'survey-text',
+            questions: [
+                ['<p class = center-block-text>예측정보를 제공한 A(왼쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+            ],
+            data: {
+                trial_id: 'response',
+                exp_stage: 'test3L'
+            }
+        }
+    
+        var response_block_R = {
+            type: 'survey-text',
+            questions: [
+                ['<p class = center-block-text>예측정보를 제공한 B(오른쪽)조언자의 신뢰도를 입력하세요. <br> 여러분이 느끼는 신뢰도를 0~100사이의 값으로 입력하세요.</p>']
+            ],
+            data: {
+                trial_id: 'response',
+                exp_stage: 'test3R'
+            }
+        }
+
+        test_block3_b.timeline.push(response_block_L)
+        test_block3_b.timeline.push(response_block_R)
     }
 
 
@@ -2030,8 +2096,8 @@ var test_block1_b = {
         timeline.push(test_block1);
         timeline.push(rest_block);
     }
+    timeline.push(rest_block); // 세션 종료설명(정산)
 
-    timeline.push(rest_block);
 	timeline.push(Ins_block_b);
 	if(sample==1) {
         timeline.push(Ins_block1_b);
