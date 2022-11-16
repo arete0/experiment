@@ -68,8 +68,8 @@ var instructTimeThresh = 0 ///in seconds
 var current_trial = 0
 var letters = 'bBdDgGtTvV'
 var num_blocks = 2 //of each delay
-var num_trials = 40
-var num_practice_trials = 25
+var num_trials = 45 // 45
+var num_practice_trials = 25// 25
 var delays = jsPsych.randomization.shuffle([1, 2, 3])
 var control_before = Math.round(Math.random()) //0 control comes before test, 1, after
 var stims = [] //hold stims per block
@@ -128,7 +128,7 @@ var instructions_block = {
 	},
 	pages: [
 		'<div class = centerbox><p class = block-text>이 실험에서는 알파벳 낱자가 연속해서 화면에 나타납니다. 현재 나타난 알파벳 낱자가 이전에 몇 번째 전에 나타났던 낱자와 <strong>일치</strong>하면 <strong>왼쪽 방향키</strong>를 눌러 응답하는 과제입니다. <br> 예를 들어, D ... g ... t ... D 순으로 나타났다면, 마지막 D는 세 번째 전 D와 일치합니다. 이때는 <strong>왼쪽 방향키</strong>를 눌러야 합니다. 그외의 경우에는 모두 <strong>아래쪽 방향키</strong>를 눌러야 합니다. <br><br> <strong>중요한 것</strong>은 <strong>대문자</strong>와 <strong>소문자</strong>를 무시해야 합니다. "t"와 "T"는 일치합니다.</p></div>',
-		'<div class = centerbox><p class = block-text>이 실험은 몇개의 블록으로 구성되어 있는데, 각 블록마다 <strong>몇 번째 전(n-back)</strong>에 주의를 집중해야 하는지가 달라집니다. 각 블록의 시작에서 주의를 집중해야할 "몇 번 전(n-back)"에 대해 알 수 있습니다. </p><p class = block-text>예를 들어, 만약 <strong>"2-back"</strong>이라면, 현재 나타나는 낱자가 2번째 전에 나타났던 낱자와 일치하는지를 계속해서 응답해야 합니다. 만약 <strong>g...G...v...T...b...t...b</strong> 순서의 낱자를 보았다면, 마지막 <strong>"t"</strong>와 <strong>"b"</strong>에 대해서는 <strong>왼쪽 방향키</strong>를 누르고, 다른 모든 낱자에 대해서는 <strong>아래쪽 방향키</strong>를 눌러야 합니다.</p><p class = block-text>블록 중 하나는 <strong>"0-back"</strong>입니다. 이 블록에서는 특정한 낱자가 나타나면 왼쪽 방향키를 눌러야 하고, 그 외 다른 낱자에 대해서는 모두 아래쪽 방향키를 눌러야합니다.</p></div>',
+		'<div class = centerbox><p class = block-text>이 실험은 몇개의 블록으로 구성되어 있는데, 각 블록마다 <strong>몇 번째 전(n-back)</strong>낱자에 주의를 집중해야 하는지가 달라집니다. 각 블록의 시작에서 주의를 집중해야할 "몇 번 전(n-back)"에 대해 알 수 있습니다. </p><p class = block-text>예를 들어, 만약 <strong>"2-back"</strong>이라면, 현재 나타나는 낱자가 2번째 전에 나타났던 낱자와 일치하는지에 대해서 계속 응답해야 합니다. 만약 <strong>g...G...v...T...b...t...b</strong> 순서로 낱자가 제시된다면, 세번째 낱자(v)가 제시될 때부터 "아래쪽 방향키 - 아래쪽 방향키 - 아래쪽 방향키 - 왼쪽 방향키 - 왼쪽 방향키" 순으로 응답해야 합니다. 즉 마지막 <strong>"t"</strong>와 <strong>"b"</strong>에 대해서만 <strong>왼쪽 방향키</strong>를 누르고, 다른 모든 낱자에 대해서는 <strong>아래쪽 방향키</strong>를 눌러야 합니다.</p><p class = block-text>블록 중 하나는 <strong>"0-back"</strong>입니다. 이 블록에서는 특정한 낱자가 나타나면 왼쪽 방향키를 눌러야 하고, 그 외 다른 낱자에 대해서는 모두 아래쪽 방향키를 눌러야합니다.</p></div>',
 	],
 	allow_keys: false,
 	show_clickable_nav: true,
@@ -172,7 +172,7 @@ var end_block = {
 
 var start_practice_block = {
 	type: 'poldrack-text',
-	text: '<div class = centerbox><p class = block-text>연습 시행입니다.<br><br>연습동안 <strong>한 낱자 전(1-back)</strong>에 나타난 낱자와 일치하면, 왼쪽 방향키를 누르고, 그 외 다른 경우 아래쪽 방향키를 누르시오.</p><p class = center-block-text>연습 시행 동안은 응답에 대한 정답여부에 대해 피드백이 제공됩니다. 본 시행에서는 피드백이 제공되지 않습니다. <br><strong>enter</strong>를 눌러 시작하시오.</p></div>',
+	text: '<div class = centerbox><p class = block-text>연습 시행입니다.<br><br>연습동안 <strong>한 낱자 전(1-back)</strong>에 나타난 낱자와 일치하면, 왼쪽 방향키를 누르고, 그 외 다른 경우 아래쪽 방향키를 누르시오.</p><p class = block-text>연습 시행 동안은 응답에 대한 정답여부(피드백)가 제공됩니다. 본 시행에서는 피드백이 제공되지 않습니다.</p><p class = center-block-text> <br><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	data: {
 		trial_id: "instruction"
