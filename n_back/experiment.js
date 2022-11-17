@@ -68,8 +68,8 @@ var instructTimeThresh = 0 ///in seconds
 var current_trial = 0
 var letters = 'bBdDgGtTvV'
 var num_blocks = 2 //of each delay
-var num_trials = 45 // 45
-var num_practice_trials = 25// 25
+var num_trials = 40 // 45
+var num_practice_trials = 20// 25
 var delays = jsPsych.randomization.shuffle([1, 2, 3])
 var control_before = Math.round(Math.random()) //0 control comes before test, 1, after
 var stims = [] //hold stims per block
@@ -181,6 +181,17 @@ var start_practice_block = {
 	timing_post_trial: 1000
 };
 
+var end_practice_block = {
+	type: 'poldrack-text',
+	text: '<div class = centerbox><p class = block-text>연습 끝났습니다.<br><br></p><p class = block-text>아제는 본 시행이 시작됩니다. 본 시행에서는 피드백이 제공되지 않습니다.</p><p class = center-block-text> <br><strong>enter</strong>를 눌러 시작하시오.</p></div>',
+	cont_key: [13],
+	data: {
+		trial_id: "instruction"
+	},
+	timing_response: 180000,
+	timing_post_trial: 1000
+};
+
 var start_test_block = {
 	type: 'poldrack-text',
 	data: {
@@ -188,6 +199,17 @@ var start_test_block = {
 	},
 	timing_response: 180000,
 	text: '<div class = centerbox><p class = center-block-text>본 시행입니다.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
+	cont_key: [13],
+	timing_post_trial: 1000
+};
+
+var start_trial_block = {
+	type: 'poldrack-text',
+	data: {
+		trial_id: "test_intro"
+	},
+	timing_response: 180000,
+	text: '<div class = centerbox><p class = center-block-text><br><br></p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
 };
@@ -269,6 +291,8 @@ var n_back_experiment = []
 n_back_experiment.push(instruction_node);
 n_back_experiment.push(start_practice_block)
 n_back_experiment = n_back_experiment.concat(practice_trials)
+n_back_experiment.push(end_practice_block)
+n_back_experiment.push(start_test_block)
 
 if (control_before === 0) {
 	n_back_experiment.push(start_control_block)
@@ -287,11 +311,12 @@ for (var d = 0; d < delays.length; d++) {
 			'번째 전에 나타난 낱자와 일치하면 <strong>왼쪽 방향키</strong>를 누르고, 그 외의 모든 경우 아래쪽 방향키를 누르시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 		cont_key: [13]
 	};
+	
 	n_back_experiment.push(start_delay_block)
 
 
 	for (var b = 0; b < num_blocks; b++) {
-		n_back_experiment.push(start_test_block)
+		n_back_experiment.push(start_trial_block)
 		var target = ''
 		stims = []
 		for (var i = 0; i < num_trials; i++) {
