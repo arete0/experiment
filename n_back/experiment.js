@@ -184,7 +184,7 @@ var start_practice_block = {
 
 var end_practice_block = {
 	type: 'poldrack-text',
-	text: '<div class = centerbox><p class = block-text>연습 끝났습니다.<br><br></p><p class = block-text>아제는 본 시행이 시작됩니다. 본 시행에서는 피드백이 제공되지 않습니다.</p><p class = center-block-text> <br><strong>enter</strong>를 눌러 시작하시오.</p></div>',
+	text: '<div class = centerbox><p class = block-text>연습 시행이 끝났습니다.<br><br></p><p class = block-text>아제는 본 시행이 시작됩니다. 본 시행에서는 피드백이 제공되지 않습니다.</p><p class = center-block-text> <br><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	data: {
 		trial_id: "instruction"
