@@ -47,27 +47,25 @@ $( document ).ready(function() {
     expfactory_finished = false;
 
     jsPsych.init({
-        timeline: n_back_experiment,
-        display_element: "getDisplayElement",
-        fullscreen: true,
-        on_trial_finish: function(data){
-        addID('n_back')
-    },
-    on_finish: function(data){
-        var info = getParticipantInfo();
-        //jsPsych.data.displayData();
-        var filename = ['n_back_', letter_color,  info.email, (new Date()).getTime()].join('-') + '.csv';
-        jsPsych.data.localSave(filename, 'csv');
-        var rawdata_string = jsPsych.data.dataAsCSV();
-        //console.log(rawdata_string);
-        //saveData(filename, rawdata_string);
-        expfactory_finished = true;
-
-        location.href="https://arete0.github.io/experiment";
-    }
+            timeline: n_back_experiment,
+            display_element: "getDisplayElement",
+            fullscreen: true,
+            on_trial_finish: function(data){
+            addID('n_back')
+            },
+        on_finish: function(data){
+            var info = getParticipantInfo();
+            //jsPsych.data.displayData();
+            var filename = ['n_back_', letter_color,  info.email, (new Date()).getTime()].join('-') + '.csv';
+            jsPsych.data.localSave(filename, 'csv');
+            // var rawdata_string = jsPsych.data.dataAsCSV();
+            // saveData(filename, jsPsych.data.get().csv());
+            expfactory_finished = true;
+            location.href="https://arete0.github.io/experiment";
+        }
     });
 });
-    function saveData(filename, filedata){
+    function saveData_old(filename, filedata){
        $.ajax({
           type:'post',
           cache: false,
@@ -75,6 +73,14 @@ $( document ).ready(function() {
           data: {filename: filename, filedata: filedata}
         });
     }
+
+    function saveData(name, data){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://211.209.237.249/write_data.php'); // 'write_data.php' is the path to the php file described above.
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({filename: name, filedata: data}));
+    }
+
 
     function getParticipantInfo() {
     return decodeURI(location.search) // decode query parameters

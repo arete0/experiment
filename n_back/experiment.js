@@ -63,13 +63,14 @@ var run_attention_checks = false
 var attention_check_thresh = 0.65
 var sumInstructTime = 0 //ms
 var instructTimeThresh = 0 ///in seconds
+var timing_response_value = 180000 // debuging 1000 default 180000
 
 // task specific variables
 var current_trial = 0
 var letters = 'bBdDgGtTvV'
 var num_blocks = 2 //of each delay
-var num_trials = 40 // 45
-var num_practice_trials = 20// 25
+var num_trials = 36 // 45
+var num_practice_trials = 20 // 25
 var delays = jsPsych.randomization.shuffle([1, 2, 3])
 var control_before = Math.round(Math.random()) //0 control comes before test, 1, after
 var stims = [] //hold stims per block
@@ -83,7 +84,7 @@ var attention_check_block = {
 	data: {
 		trial_id: "attention_check"
 	},
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	response_ends_trial: true,
 	timing_post_trial: 200
 }
@@ -118,7 +119,7 @@ var feedback_instruct_block = {
 	cont_key: [13],
 	text: getInstructFeedback,
 	timing_post_trial: 0,
-	timing_response: 180000
+	timing_response: timing_response_value
 };
 /// This ensures that the subject does not read through the instructions too quickly.  If they do it too quickly, then we will go over the loop again.
 var instructions_block = {
@@ -159,7 +160,7 @@ var instruction_node = {
 
 var end_block = {
 	type: 'poldrack-text',
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	data: {
 		trial_id: "end",
 		exp_id: 'n_back'
@@ -177,7 +178,7 @@ var start_practice_block = {
 	data: {
 		trial_id: "instruction"
 	},
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	timing_post_trial: 1000
 };
 
@@ -188,7 +189,7 @@ var end_practice_block = {
 	data: {
 		trial_id: "instruction"
 	},
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	timing_post_trial: 1000
 };
 
@@ -197,7 +198,7 @@ var start_test_block = {
 	data: {
 		trial_id: "test_intro"
 	},
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	text: '<div class = centerbox><p class = center-block-text>본 시행입니다.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
@@ -208,7 +209,7 @@ var start_trial_block = {
 	data: {
 		trial_id: "test_intro"
 	},
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	text: '<div class = centerbox><p class = center-block-text><br><br></p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
@@ -216,7 +217,7 @@ var start_trial_block = {
 
 var start_control_block = {
 	type: 'poldrack-text',
-	timing_response: 180000,
+	timing_response: timing_response_value,
 	data: {
 		trial_id: "control_intro"
 	},
@@ -305,7 +306,7 @@ for (var d = 0; d < delays.length; d++) {
 		data: {
 			trial_id: "delay_text"
 		},
-		timing_response: 180000,
+		timing_response: timing_response_value,
 		text: '<div class = centerbox><p class = block-text>"' + delay +'-back"입니다. <br><br> 현재 나타난 낱자가 ' +
 			delay +
 			'번째 전에 나타난 낱자와 일치하면 <strong>왼쪽 방향키</strong>를 누르고, 그 외의 모든 경우 아래쪽 방향키를 누르시오.</p><p class = center-block-text><strong>enter</strong>를 눌러 시작하시오.</p></div>',
