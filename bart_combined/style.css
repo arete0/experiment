@@ -52,7 +52,7 @@ body {
 }
 
 .adv1 {
-    font-size: 100%;
+    font-size: 120%;
     padding-top: 2vh;
     padding-bottom: 2vh;
     width: 20vw;
@@ -99,14 +99,14 @@ body {
 
 .adv1_b {
 
-    font-size: 100%;
+    font-size: 120%;
     padding-top: 2vh;
     width: 20vw;
 
     float: left;
 }
 .adv2_b {
-    font-size: 100%;
+    font-size: 120%;
     padding-top: 2vh;
     width: 20vw;
     float: left;
@@ -122,4 +122,3 @@ body {
 
 
 
--webkit-transform: translateZ(0)
