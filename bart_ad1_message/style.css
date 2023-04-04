@@ -1,0 +1,124 @@
+
+.center-text {
+	font-size: 80px;
+
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+img {
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+body {
+    background-color: grey;
+    text-align: center;
+}
+
+.taskname {
+    text-align: center;
+    font-size: 200%;
+    margin-top: 2vh;
+
+}
+
+.inst {
+    text-align: center;
+    font-size: 130%;
+    margin: 2vh auto auto 2vh;
+    overflow: hidden;
+}
+
+.clear {
+    clear: both;
+}
+
+.advgap_left {
+    font-size: 100%;
+    padding-top: 2vh;
+    width: 32vw;
+    float: left;
+}
+.advgap_center {
+    font-size: 100%;
+    padding-top: 2vh;
+    width: 16vw;
+    float: left;
+}
+
+.adv1 {
+    font-size: 120%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 20vw;
+    float: left;
+}
+.adv2 {
+    text-align: center;
+    font-size: 100%;
+    padding-top: 5%;
+    height: 100px;
+    border: 5px solid navy;
+    float: left;
+}
+
+.adv3 {
+    text-align: center;
+    font-size: 100%;
+    padding-top: 5%;
+    height: 100px;
+    border: 5px solid purple;
+    float: left;
+}
+.adv4 {
+    text-align: center;
+    font-size: 100%;
+    padding-top: 5%;
+    height: 100px;
+    border: 5px solid pink;
+    float: left;
+}
+
+.advgap_left_b {
+    font-size: 100%;
+    padding-top: 2vh;
+    width: 13vw;
+    float: left;
+}
+.advgap_center_b {
+    font-size: 100%;
+    padding-top: 2vh;
+    width: 16vw;
+    float: left;
+}
+
+.adv1_b {
+
+    font-size: 120%;
+    padding-top: 2vh;
+    width: 20vw;
+
+    float: left;
+}
+.adv2_b {
+    font-size: 120%;
+    padding-top: 2vh;
+    width: 20vw;
+    float: left;
+}
+
+.clickspace {
+    text-align: center;
+    font-size: 130%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+
+}
+
+
+
