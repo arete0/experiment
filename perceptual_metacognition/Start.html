@@ -1,0 +1,79 @@
+<!DOCTYPE html><html class='' lang="">
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>웹 실험실</title>
+
+    <link rel='stylesheet' type='text/css' href='../static/css/jspsych.css'>
+    <link rel='stylesheet' type='text/css' href='../static/css/default_style.css'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <meta name="google-signin-client_id" content="306445631627-6uun6lcjsndlf9i4et6c5an2noaj5fmg.apps.googleusercontent.com">
+</head>
+
+<body style='text-align: center;'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src='../static/js/math.min.js'></script>
+    <script src='../static/js/jspsych/jspsych.js'></script>
+    <script src='../static/js/jspsych/plugins/jspsych-text.js'></script>
+    <script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
+    <script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
+    <script src='../static/js/jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
+    <script src='../static/js/jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+    <script src='../static/js/jspsych/poldrack_plugins/jspsych-single-stim-button.js'></script>
+    <script src='../static/js/jspsych/plugins/jspsych-call-function.js'></script>
+    <script src='../static/js/jspsych/plugins/jspsych-survey-text.js'></script>
+    <script src='../static/js/utils/poldrack_utils.js'></script>
+
+    <script src='experiment.js'></script>
+
+    <script>
+    $( document ).ready(function() {
+
+        expfactory_finished = false;
+
+        jsPsych.init({
+            timeline: perceptual_metacognition_experiment,
+            display_element: "getDisplayElement",
+            fullscreen: true,
+            on_trial_finish: function(data){
+                addID('PMeta')
+            },
+            on_finish: function(data) {
+                var info = getParticipantInfo();
+                //jsPsych.data.displayData();
+                var filename = ['PMeta', info.email, (new Date()).getTime()].join('-') + '.csv';
+                jsPsych.data.localSave(filename, 'csv');
+                expfactory_finished = true;
+                location.href="https://arete0.github.io/experiment";
+            }
+        })
+
+    });
+
+    function saveData(filename, filedata){
+       $.ajax({
+          type:'jsonp',
+          cache: false,
+          url: 'http://202.30.6.15/save_data.php', // this is the path to the above PHP script
+          data: {filename: filename, filedata: filedata}
+        });
+    }
+
+    function getParticipantInfo() {
+    return decodeURI(location.search) // decode query parameters
+      .substring(1) // remove '?'
+      .split('&') // split parameters
+      .map(function (token) {
+        return token.split('='); // split key and value
+      })
+      .reduce(function (out, item) {
+        if (item[0].length == 0) return out;
+        out[item[0]] = item[1];
+        return out;
+      }, {}); // collect into an object
+    }
+    </script>
+</body>
+</html>
