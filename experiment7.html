@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="google-signin-client_id" content="1084867659362-oohs02lc2gnn1ntths0ug5eubnd8s8ii.apps.googleusercontent.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
+	  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <title>아주대학교 인지심리학 실험실 AC4CS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/2-col-portfolio.css" rel="stylesheet">
+    <style>
+	  img.resize {
+	  width:700px;
+	  height:400px;
+	}
+     </style>
+
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">연구 7 [2024심리학연구법 실습실험]</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" onclick="location.href='lists.html?' + infotail;" >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            -->
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	    crossorigin="anonymous"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			//console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			//console.log('Name: ' + profile.getName());
+			//console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			//startExperiment(true);
+		}
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+				console.log('User signed out.');
+				location.href = "https://arete0.github.io/experiment/";
+			});
+		}
+		function startExperiment(fromOnSignIn) {
+			var auth2 = gapi.auth2.getAuthInstance();
+			if (auth2.isSignedIn.get()) {
+				var profile = auth2.currentUser.get().getBasicProfile();
+				//console.log('ID: ' + profile.getId());
+				//console.log('Full Name: ' + profile.getName());
+				//console.log('Given Name: ' + profile.getGivenName());
+				//console.log('Family Name: ' + profile.getFamilyName());
+				//console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail());
+				location.href = "experiment.html?" + ['email=' + profile.getEmail()]
+					.join('&');
+			} else if (fromOnSignIn) {
+				alert("로그인에 실패했습니다.");
+			} else {
+				$(".g-signin2 > .abcRioButton").click();
+			}
+		}
+	</script>
+
+	    
+<script>		
+	var info = getParticipantInfo();
+	//var filename = [info.id, info.name, info.email, (new Date()).getTime()].join('-') + '.csv';
+	var infotail = 'email=' + info.email//['id=' + info.id, 'name=' + info.name, 'email=' + info.email].join('&');
+	
+	function getParticipantInfo() {
+	    return decodeURI(location.search) // decode query parameters
+	      .substring(1) // remove '?'
+	      .split('&') // split parameters
+	      .map(function (token) {
+		return token.split('='); // split key and value
+	      })
+	      .reduce(function (out, item) {
+		if (item[0].length == 0) return out;
+		out[item[0]] = item[1];
+		return out;
+	      }, {}); // collect into an object
+	}
+</script>
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">심리학 실험실
+        <small></small>
+      </h1>
+      <!-- <div class="row">
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="Guide5.pdf"><img class="card-img-top" src="images/manual_thumb.jpg" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="Guide5.pdf">실험 안내(설명)</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <hr>
+      <div class="row">
+
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#" onclick="location.href='perceptual_metacognition/Start.html?' + infotail;"><img class="card-img-top" src="images\Pmeta_thumb.PNG" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='perceptual_metacognition/Start.html?' + infotail;">Perceptual_Metacognition</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#" onclick="location.href='Information_sampling/Start.html?' + infotail;"><img class="card-img-top" src="images\infomation_sampling_thumb.PNG" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='Information_sampling/Start.html?' + infotail;">Information Sampling</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div> -->
+        <!--
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#" onclick="location.href='n_back/Start.html?' + infotail;"><img class="card-img-top" src="images/n-back_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='n_back/Start.html?' + infotail;">n-back</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        -->
+        <!-- <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#" onclick="location.href='bart_jspsych/Start.html?' + infotail;"><img class="card-img-top"  src="images/bart_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='bart_jspsych/Start.html?' + infotail;">BART</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div> -->
+
+
+
+        <!--
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#" onclick="location.href='bart_combined/Start.html?' + infotail;"><img class="card-img-top"  src="images/bart_advice1_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" onclick="location.href='bart_combined/Start.html?' + infotail;">풍선 과제</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-6 portfolio-item"></div>
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="http://ksurv.kr/Z0M6PT48PA"><img class="card-img-top" src="images/KSDC_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="http://ksurv.kr/Z0M6PT48PA">설문지-I(Demographic Info & Scales)</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+            <a href="https://forms.gle/dtd4RJYgbLxLRxQJ8"><img class="card-img-top" src="images/demographics_thumb.png" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="https://forms.gle/dtd4RJYgbLxLRxQJ8">설문지-II(Demographic Info & Scales)</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+          <!--
+          <div class="col-lg-6 portfolio-item">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="images/raven_thumb.png" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Raven's APM</a>
+                </h4>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        -->
+
+      <!-- /.row -->
+
+      <!-- Pagination -->
+      <!--
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+      -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
