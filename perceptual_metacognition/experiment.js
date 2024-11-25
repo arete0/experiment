@@ -337,8 +337,8 @@ var credit_var = true
 
 // task specific variables
 var practice_len = 10
-var exp_len = 150 //300
-var contrast = 0.1
+var exp_len = 200 //300
+var contrast = 0.1  // 0.1
 var correct_counter = 0
 var current_trial = 0
 var choices = [37, 39]
@@ -385,6 +385,9 @@ var end_block = {
 	text: '<div class = centerbox><p class = center-block-text>이 과제가 완료되었습니다. 참여해주셔서 감사합니다! </p><p class = center-block-text><strong>Enter</strong> 키를 눌러 계속 진행하세요.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 0,
+	on_load: function() {
+		document.body.style.cursor = 'default';
+	},
 	on_finish: assessPerformance
 };
 
@@ -411,7 +414,10 @@ var instructions_block = {
 	],
 	allow_keys: false,
 	show_clickable_nav: true,
-	timing_post_trial: 1000
+	timing_post_trial: 1000,
+	on_finish: function() {
+		document.body.style.cursor = 'none';
+	},
 };
 
 var instruction_node = {
@@ -529,6 +535,7 @@ var confidence_key_block = {
 		jsPsych.data.addDataToLastTrial({confidence: 'confidence_' + (index+1)})
 	}
 }
+
 
 /* create experiment definition array */
 var perceptual_metacognition_experiment = [];

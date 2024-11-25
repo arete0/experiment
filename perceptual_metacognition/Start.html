@@ -8,6 +8,7 @@
     <link rel='stylesheet' type='text/css' href='../static/css/default_style.css'>
     <link rel='stylesheet' type='text/css' href='style.css'>
     <meta name="google-signin-client_id" content="306445631627-6uun6lcjsndlf9i4et6c5an2noaj5fmg.apps.googleusercontent.com">
+
 </head>
 
 <body style='text-align: center;'>
@@ -25,7 +26,9 @@
     <script src='../static/js/jspsych/plugins/jspsych-call-function.js'></script>
     <script src='../static/js/jspsych/plugins/jspsych-survey-text.js'></script>
     <script src='../static/js/utils/poldrack_utils.js'></script>
-
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
     <script src='experiment.js'></script>
 
     <script>
@@ -44,23 +47,98 @@
                 var info = getParticipantInfo();
                 //jsPsych.data.displayData();
                 var filename = ['PMeta', info.email, (new Date()).getTime()].join('-') + '.csv';
-                jsPsych.data.localSave(filename, 'csv');
+                const csvData = jsPsych.data.localSave(filename, 'csv'); // CSV 데이터 가져오기
+                /*  //메일 발송 코드
+                if (!csvData || csvData.length === 0) {
+                    console.error("실험 데이터를 가져오지 못했습니다.");
+                } else {
+                    //const csvData = convertToCSV(experimentData);
+                    console.log("발송될 CSV 데이터:\n", csvData);
+                    saveData(filename, csvData);
+                }
+                */
+                //console.log(csvData);
                 expfactory_finished = true;
                 location.href="https://arete0.github.io/experiment";
             }
         })
 
     });
+    /*
+    function sendEmailWithEmailJS(filename, filedata) {
+        emailjs.init('x7_19vWPoLuwct_im'); // EmailJS 사용자 ID 초기화
+        try {
+            // Base64로 파일 인코딩
+            const base64File = utf8ToBase64(filedata);
+            console.log(base64File);
+            const templateParams = {
+                filename: filename, // 파일 이름
+                attachments: [
+                    {
+                        content: base64File, // Base64로 인코딩된 파일 데이터
+                        filename: filename, // 첨부 파일 이름
+                        type: "text/csv",   // 파일 MIME 타입 설정 (CSV의 경우 'text/csv')
+                        disposition: "attachment", // 첨부 파일로 처리
+                    },
+                ],
+            };
 
-    function saveData(filename, filedata){
-       $.ajax({
-          type:'jsonp',
-          cache: false,
-          url: 'http://202.30.6.15/save_data.php', // this is the path to the above PHP script
-          data: {filename: filename, filedata: filedata}
-        });
+            emailjs
+                .send('service_t03cua2', 'template_lanmp4z', templateParams)
+                .then(function (response) {
+                    console.log('Email sent successfully!', response.status, response.text);
+                })
+                .catch(function (error) {
+                    console.error('Error sending email:', error);
+                });
+        } catch (e) {
+                console.error("Base64 encoding failed:", e);
+        }
     }
 
+    function saveData(filename, filedata) {
+        //console.log(filedata);
+        sendEmailWithEmailJS(filename, filedata); // EmailJS로 데이터 전송
+    }
+    // UTF-8 문자열을 Base64로 변환하는 함수
+    function utf8ToBase64(str) {
+        // UTF-8로 인코딩
+        const utf8Bytes = new TextEncoder().encode(str);
+        // Uint8Array를 Base64 문자열로 변환
+        const base64String = btoa(String.fromCharCode(...utf8Bytes));
+        return base64String;
+    }
+    */
+    /*
+    function convertToCSV(objArray) {
+        const array = Array.isArray(objArray) ? objArray : [objArray];
+        const keys = Object.keys(array[0]);
+        const csvRows = [];
+
+        // 헤더 생성
+        csvRows.push(keys.join(','));
+
+        // 각 객체를 CSV 형식으로 변환
+        array.forEach(obj => {
+            const row = keys.map(key => {
+                const value = obj[key];
+                return typeof value === 'string' ? `"${value.replace(/"/g, '""')}"` : value;
+            });
+            csvRows.push(row.join(','));
+        });
+
+        return csvRows.join('\n');
+    }
+
+    function saveData(filename, filedata){
+        $.ajax({
+           type:'jsonp',
+           cache: false,
+           url: 'http://202.30.6.15/save_data.php', // this is the path to the above PHP script
+           data: {filename: filename, filedata: filedata}
+         });
+        }
+    */
     function getParticipantInfo() {
     return decodeURI(location.search) // decode query parameters
       .substring(1) // remove '?'
