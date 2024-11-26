@@ -316,7 +316,7 @@ var afterTrialUpdate = function(data) {
 	//2 up 1 down staircase
 	if (data.key_press != -1) {
 		if (correct === false) {
-			contrast += 0.01 // 0.005
+			contrast += 0.005 // 0.005
 		} else {
 			correct_counter += 1
 			if (correct_counter == 2) {
@@ -344,7 +344,7 @@ var current_trial = 0
 var choices = [37, 39]
 var curr_data = {}
 var confidence_choices = [49, 50, 51, 52]
-var catch_trials = [25, 57, 150, 220, 270]
+var catch_trials = [16, 38, 100, 146, 180] // [25, 57, 150, 220, 270]
 var confidence_response_area =
 	'<div class = centerbox><div class = fixation>+</div></div><div class = response_div>' +
 	'<button class = response_button id = Confidence_1>1:<br> 전혀 자신 없음</button>' +
