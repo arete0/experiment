@@ -145,9 +145,13 @@
       </div>
       <div class="row">
 
-	<p><input type="radio" id="2024" name="abcd" value="30" onchange="setDisplay()"> 실습실험 - 아주대학교(심리학연구법[김영준] 수강자)</p>
-        
+	<p><input type="radio" id="2025" name="abcd" value="30" onchange="setDisplay()"> 아주대학교(심리통계와 데이터분석/생리심리학 및 실험[김영일] - 수강자)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+	<p><input type="radio" id="2025" name="abcd" value="30" onchange="setDisplay()"> 아주대학교(심리학이란 무엇인가[홍석성] - 수강자)</p>
+      
         <!--
+	<p><input type="radio" id="2024" name="abcd" value="30" onchange="setDisplay()"> 실습실험 - 아주대학교(심리학연구법[김영준] 수강자)</p>
+	<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
 	<p><input type="radio" id="2024" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(심리통계2 [김영일] 수강자)</p>
         <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
         <p><input type="radio" id="2024" name="abcd" value="20" onchange="setDisplay()"> 아주대학교(사고과정의 이해 [홍석성] 수강자)</p>
@@ -393,6 +397,16 @@
         $('#study5').hide();
         $('#study6').hide();
 	$('#study7').show();
+      }else if($('input:radio[id=2025]').is(':checked')){
+        $('#practice1').hide();
+        $('#study1').show();
+        $('#study2').hide();
+        $('#study3').hide();
+        $('#study3-1').hide();
+        $('#study4').hide();
+        $('#study5').hide();
+        $('#study6').hide();
+	$('#study7').hide();
       }
     }
     </script>
