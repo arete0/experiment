@@ -17,41 +17,62 @@ function evalAttentionChecks() {
 }
 
 function assessPerformance() {
-	/* Function to calculate the "credit_var", which is a boolean used to
-	credit individual experiments in expfactory. */
-	var experiment_data = jsPsych.data.getTrialsOfType('poldrack-single-stim')
-	var missed_count = 0
-	var trial_count = 0
-	var rt_array = []
-	var rt = 0
-		//record choices participants made
-	var choice_counts = {}
-	choice_counts[-1] = 0
-	choice_counts[32] = 0
-	for (var i = 0; i < experiment_data.length; i++) {
-		if (experiment_data[i].possible_responses != 'none') {
-			trial_count += 1
-			rt = experiment_data[i].rt
-			key = experiment_data[i].key_press
-			choice_counts[key] += 1
-			if (rt == -1) {
-				missed_count += 1
-			} else {
-				rt_array.push(rt)
-			}
-		}
-	}
-	//calculate average rt
-	var avg_rt = -1
-	if (rt_array.length !== 0) {
-		avg_rt = math.median(rt_array)
-	} 
-	credit_var = (avg_rt > 200)
-	jsPsych.data.addDataToLastTrial({"credit_var": credit_var})
+    /* Function to calculate the "credit_var", which is a boolean used to
+    credit individual experiments in expfactory. */
+    var experiment_data = jsPsych.data.getTrialsOfType('poldrack-single-stim')
+    var missed_count = 0
+    var trial_count = 0
+    var rt_array = []
+    var rt = 0
+       //record choices participants made
+    var choice_counts = {}
+    choice_counts[-1] = 0
+    choice_counts[32] = 0
+    for (var i = 0; i < experiment_data.length; i++) {
+       if (experiment_data[i].possible_responses != 'none') {
+          trial_count += 1
+          rt = experiment_data[i].rt
+          key = experiment_data[i].key_press
+          choice_counts[key] += 1
+          if (rt == -1) {
+             missed_count += 1
+          } else {
+             rt_array.push(rt)
+          }
+       }
+    }
+    //calculate average rt
+    var avg_rt = -1
+    if (rt_array.length !== 0) {
+       avg_rt = math.median(rt_array)
+    }
+    credit_var = (avg_rt > 200)
+    jsPsych.data.addDataToLastTrial({"credit_var": credit_var})
 }
 
+// *** (대안 2) 자극 제시 시간 단축 (2번 제안) ***
+// '바닥 효과'를 제거하는 또 다른 방법은 'timing_stim' 자체를 줄이는 것입니다.
+// 만약 이 방법을 사용한다면, 'practice_block'과 'test_block'의
+// 'timing_stim' 값을 750ms에서 300ms 등으로 줄여야 합니다.
+// 이 경우, 'get_response_time' 함수도 그에 맞게 수정해야 할 수 있습니다.
+// (예: gap = 300 + Math.floor(Math.random() * 150) + 100)
+//
+// 현재 코드는 '1번 제안'(총 반응 시간 압박)을 채택하고 있습니다.
+// -----------------------------------------------------------
+
+// *** 수정 (1번 제안): 반응 시간 단축 (바닥 효과 제거 목적) ***
+// 자극 제시 시간(timing_stim: 750ms)은 유지하되,
+// 자극이 사라진 후 반응할 수 있는 추가 시간을 줄여
+// '시간 압박'을 높이고 NoGo 실수를 유도합니다.
 var get_response_time = function() {
-  gap = 750 + Math.floor(Math.random() * 500) + 250
+  // 기존: gap = 750 + Math.floor(Math.random() * 500) + 250
+  // (총 1000ms ~ 1499ms / 자극 후 250ms ~ 749ms)
+  //
+  // 수정: gap = 750 + Math.floor(Math.random() * 150) + 100
+  // (총 850ms ~ 999ms / 자극 후 100ms ~ 249ms)
+  //
+  // '1번 제안'에 해당하며, 총 반응 시간을 1초 미만으로 제한합니다.
+  gap = 750 + Math.floor(Math.random() * 150) + 100
   return gap;
 }
 
@@ -206,8 +227,17 @@ for (var i = 0; i < num_go_stim; i++) {
   })
 }
   console.log(test_stimuli_block);
-var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 6);
-var test_trials = jsPsych.randomization.repeat(test_stimuli_block, 30);
+// *** 수정: 연습 시행 축소 (선택적) ***
+// 본 시행이 줄었으므로 연습 시행도 6회 -> 3회로 줄여 전체 시간을 단축합니다. (총 18회)
+// 원하시면 6회로 유지하셔도 됩니다.
+var practice_trials = jsPsych.randomization.repeat(practice_stimuli, 3);
+
+// *** 수정: 본 시행 축소 ***
+// 기존: 30회 반복 (12 * 30 = 360회)
+// 수정: 17회 반복 (12 * 17 = 204회)
+// 목표 신뢰도를 유지하면서 전체 실험 시간을 단축하기 위해
+// 본 시행 횟수를 360회에서 204회로 줄입니다.
+var test_trials = jsPsych.randomization.repeat(test_stimuli_block, 17);
 
 
 
@@ -245,8 +275,11 @@ var post_task_block = {
 };
 
 /* define static blocks */
+// *** 수정: 예상 소요 시간 텍스트 변경 ***
+// 시행 횟수가 줄었으므로 안내 텍스트를 수정합니다.
+// (10분 -> 약 5~7분)
 var feedback_instruct_text =
-  '실험 참가를 환영합니다. <br><br> 이 과제는 약 10분정도 소요됩니다. <br><br> <strong>enter</strong>를 눌러 시작하시오.'
+  '실험 참가를 환영합니다. <br><br> 이 과제는 약 5-7분정도 소요됩니다. <br><br> <strong>enter</strong>를 눌러 시작하시오.'
 var feedback_instruct_block = {
   type: 'poldrack-text',
   cont_key: [13],
@@ -272,24 +305,24 @@ var instructions_block = {
 };
 
 var instruction_node = {
-	timeline: [feedback_instruct_block, instructions_block],
-	/* This function defines stopping criteria */
-	loop_function: function(data) {
-		for (i = 0; i < data.length; i++) {
-			if ((data[i].trial_type == 'poldrack-instructions') && (data[i].rt != -1)) {
-				rt = data[i].rt
-				sumInstructTime = sumInstructTime + rt
-			}
-		}
-		if (sumInstructTime <= instructTimeThresh * 1000) {
-			feedback_instruct_text =
-				'지시문을 읽기에 충분하지 않은 시간이었습니다. 지시문을 충분히 이해할 수 있도록 더 자세히 읽으세요. <strong>enter</strong>를 눌러 다음으로 넘어가시오.'
-			return true
-		} else if (sumInstructTime > instructTimeThresh * 1000) {
-			feedback_instruct_text = '지시사항 전달이 끝났습니다. <strong>enter</strong>를 눌러 다음으로 넘어가시오.'
-			return false
-		}
-	}
+    timeline: [feedback_instruct_block, instructions_block],
+    /* This function defines stopping criteria */
+    loop_function: function(data) {
+       for (i = 0; i < data.length; i++) {
+          if ((data[i].trial_type == 'poldrack-instructions') && (data[i].rt != -1)) {
+             rt = data[i].rt
+             sumInstructTime = sumInstructTime + rt
+          }
+       }
+       if (sumInstructTime <= instructTimeThresh * 1000) {
+          feedback_instruct_text =
+             '지시문을 읽기에 충분하지 않은 시간이었습니다. 지시문을 충분히 이해할 수 있도록 더 자세히 읽으세요. <strong>enter</strong>를 눌러 다음으로 넘어가시오.'
+          return true
+       } else if (sumInstructTime > instructTimeThresh * 1000) {
+          feedback_instruct_text = '지시사항 전달이 끝났습니다. <strong>enter</strong>를 눌러 다음으로 넘어가시오.'
+          return false
+       }
+    }
 }
 
 
@@ -342,8 +375,9 @@ var practice_block = {
   incorrect_text: '<div class = centerbox><div style="color:black font: 20px"; class = center-text>오답</div></div>',
   timeout_message: getFeedback,
   choices: [32],
+  // *** 참고: 이 블록은 수정된 get_response_time()을 자동으로 사용합니다. ***
   timing_response: get_response_time,
-  timing_stim: 750,
+  timing_stim: 750, // (대안 2: 이 값을 300ms 등으로 줄일 수 있음)
   timing_feedback_duration: 1000,
   show_stim_with_feedback: false,
   timing_post_trial: 250,
@@ -360,7 +394,8 @@ var test_block = {
   },
   is_html: true,
   choices: [32],
-  timing_stim: 750,
+  timing_stim: 750, // (대안 2: 이 값을 300ms 등으로 줄일 수 있음)
+  // *** 참고: 이 블록은 수정된 get_response_time()을 자동으로 사용합니다. ***
   timing_response: get_response_time,
   timing_post_trial: 0,
   on_finish: appendData
